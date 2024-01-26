@@ -1,0 +1,77 @@
+// Define colors
+
+
+// .todo-list{
+//     margin-top: 30px;
+//     // background-color: cadetblue;
+    
+//     .todoContainer{
+//         margin: 10px;
+//     display: flex;
+//     align-items: center;
+//     // justify-content: space-between;
+
+    
+
+    
+//     border: 1px solid black;
+//     }
+    
+
+
+  
+
+//     a{
+//         text-decoration: none;
+//         color: inherit;
+//     }
+// }
+
+// SCSS
+
+// Define colors
+$primary-color: #3498db;
+$background-color: #f9f9f9;
+
+// Style the todo list container
+.todo-list {
+  background-color: $background-color;
+  padding: 20px;
+}
+
+// Style each todo item container
+.todoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  
+
+  // Style the checkbox container
+  .checkbox-container {
+    position: relative;
+    flex-shrink: 0; // Prevent checkbox from shrinking
+
+    // SCSS
+
+
+  
+  }
+
+  // Style the link wrapping the Todo component
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+
+

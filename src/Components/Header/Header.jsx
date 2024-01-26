@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setCurrnetState } from '../../utils/stateSlice';
 import SearchTodo from '../SearchTodo/SearchTodo';
+import './header.css';
+import { AccountSvg, SettingSvg } from '../../utils/svgs';
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -26,12 +28,28 @@ const Header = () => {
 	console.log('Render header');
 
 	return (
-		<div>
-			<Link to="/todo/add">Add</Link>
+		<div className="main-header">
+			<div className="heading">
+				<h1>TO-DO</h1>
+				<div className="left-icon icons">
+					<SettingSvg />
+				</div>
+			</div>
 			<SearchTodo />
-			<button onClick={handelAllBtn}>All</button>
-			<button onClick={handelActiveBtn}>Active</button>
-			<button onClick={handelCompleted}>Completed</button>
+			<div className="btn-container">
+				<Link className="btn" to="/todo/add">
+					Add
+				</Link>
+				<button className="btn" onClick={handelAllBtn}>
+					All
+				</button>
+				<button className="btn" onClick={handelActiveBtn}>
+					Active
+				</button>
+				<button className="btn" onClick={handelCompleted}>
+					Completed
+				</button>
+			</div>
 		</div>
 	);
 };

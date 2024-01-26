@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addTodo } from '../../utils/todoSlice';
 import { useNavigate } from 'react-router';
 import checkValidation from '../../utils/validation';
+import '../AddTodo/addTodo.css';
 
 const AddTodo = () => {
 	const dispatch = useDispatch();

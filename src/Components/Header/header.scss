@@ -1,0 +1,105 @@
+// Define colors
+$primary-color: #3498db; // Header background color
+$text-color: black; // Text color
+$icon-color: #fff; // Icon color
+$button-color: #3787EB; // Button color
+$button-hover-color: #27ae60; // Button hover color
+$input-border-color: #3787EB; // Input border color
+$input-focus-color: #2ecc71; // Input focus color
+$link-color: $button-color; // Link color
+$link-hover-color: $button-hover-color; // Link hover color
+
+.main-header {
+//   background-color: $primary-color;
+  color: $text-color;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left-icon,
+    .icons {
+      display: flex;
+      align-items: center;
+
+      svg {
+        fill: $icon-color;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+
+  .search-container {
+    // margin-top: 10px;
+    display: block;
+
+    .search-form {
+      padding: 0;
+     
+      .inp-box {
+        width: 100%;
+        padding: 10px;
+        padding-left: 19px;
+        font-size: 16px;
+        border: 1px solid $input-border-color;
+        border-radius: 50px;
+        margin-top: 8px;
+        margin-bottom: 0;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: $input-focus-color;
+        }
+      }
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    margin-top: 10px;
+    text-align: center;
+
+    .btn,
+    a.btn {
+      flex: 1;
+      background-color: $button-color;
+      color: $text-color;
+      padding: 10px;
+      margin-right: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none; // Added for links
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        background-color: $button-hover-color;
+      }
+    }
+  }
+}
+
+// Media query for larger screens (optional)
+@media (min-width: 768px) {
+  .main-header {
+    .btn-container {
+      margin-top: 0;
+    }
+  }
+}

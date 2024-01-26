@@ -3,6 +3,7 @@ import Todo from '../Todo/Todo';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { editTodoState } from '../../utils/todoSlice';
+import './todoList.css';
 
 const TodoList = () => {
 	const dispatch = useDispatch();
@@ -35,12 +36,18 @@ const TodoList = () => {
 
 	//   console.log(todoStoredata);
 	return (
-		<div>
+		<div className="todo-list">
 			{todoData.map((todo) => (
 				<div key={todo.id} className="todoContainer">
-					<input type="checkbox" onChange={handleCheckBox} value={todo.id} checked={todo.isCompleted} />
-					<Link to={'/todo/' + todo.id}>
-						<Todo name={todo.name} isCompleted={todo.isCompleted} />
+					<input
+						className="inp-checkbox"
+						type="checkbox"
+						onChange={handleCheckBox}
+						value={todo.id}
+						checked={todo.isCompleted}
+					/>
+					<Link className="todo-item" to={'/todo/' + todo.id}>
+						<Todo name={todo.name} isCompleted={todo.isCompleted} deadline={todo.deadline} />
 					</Link>
 				</div>
 			))}

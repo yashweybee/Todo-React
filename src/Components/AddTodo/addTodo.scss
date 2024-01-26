@@ -1,0 +1,116 @@
+// Define colors
+$primary-color: #3498db; // Primary color for buttons and form elements
+$text-color: #000; // Text color
+$form-bg-color: #f8f9fa; // Background color for the form
+$border-color: #ccc; // Border color for form elements
+$error-text-color: #ff4d4f; // Color for error text
+$calendar-text-color: #555; // Adjusted color for calendar text
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px; // Adjust the max width according to your design
+  margin: 0 auto;
+  padding: 20px;
+//   background-color: $form-bg-color;
+//   border: 1px solid $border-color;
+  border-radius: 8px;
+
+  label {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 8px;
+    color: $text-color;
+  }
+
+  input[type="text"],
+  input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .radioContainer {
+    display: flex;
+    margin-bottom: 16px;
+
+    label {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      color: $text-color;
+
+      input[type="radio"] {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .time-container {
+    margin-bottom: 16px;
+
+    label {
+      font-size: 16px;
+      color: $text-color;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input[type="time"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+  }
+
+  .calander-container {
+    margin-bottom: 16px;
+
+    label {
+      font-size: 16px;
+      color: $calendar-text-color; // Adjusted color for calendar text
+      margin-bottom: 8px;
+      display: block;
+    }
+  }
+
+  p {
+    color: $error-text-color;
+    margin-bottom: 16px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: $primary-color;
+    color: $text-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:first-child {
+      margin-right: 8px;
+      background-color: #ddd; // Adjust cancel button color
+      color: $text-color;
+
+      &:hover {
+        background-color: #ccc; // Adjust cancel button hover color
+      }
+    }
+
+    &:last-child {
+      &:hover {
+        background-color: darken($primary-color, 10%); // Adjust add button hover color
+      }
+    }
+  }
+}

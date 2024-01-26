@@ -1,0 +1,7 @@
+.single-todo {
+  display: flex;
+  flex-direction: column;
+}
+.single-todo * {
+  margin: 0;
+}/*# sourceMappingURL=todo.css.map */
