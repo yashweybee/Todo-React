@@ -1,3 +1,13 @@
+.head {
+  display: flex;
+  align-items: center;
+}
+.head h1 {
+  margin-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -12,8 +22,7 @@ form label {
   margin-bottom: 8px;
   color: #000;
 }
-form input[type=text],
-form input[type=time] {
+form input[type=text] {
   width: 100%;
   padding: 10px;
   margin-bottom: 16px;
@@ -24,7 +33,7 @@ form input[type=time] {
 }
 form .radioContainer {
   display: flex;
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 form .radioContainer label {
   margin-right: 20px;
@@ -54,7 +63,7 @@ form .time-container input[type=time] {
   box-sizing: border-box;
 }
 form .calander-container {
-  margin-bottom: 16px;
+  display: none;
 }
 form .calander-container label {
   font-size: 16px;

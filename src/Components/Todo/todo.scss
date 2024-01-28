@@ -1,9 +1,27 @@
 .single-todo{
     display: flex;
-    flex-direction: column;
-
+    gap: 11rem;    
+    align-items: center;
+    // text-align: center;
     *{
         margin: 0;
+    }
+    .todo-content{
+        display: flex;
+        flex-direction: column;
+        h1{
+            font-size: larger;
+            // background-color: black;
+        }
+        p {
+            font-size: small;
+            color: gray;
+        }
+    }
+    .aero{
+        display: block;
+        // background-color: black;
+
     }
     
 }

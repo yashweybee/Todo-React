@@ -1,0 +1,29 @@
+.footer{
+// background-color: blueviolet;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+//    background-color: red;
+background-color: white;
+   text-align: center;
+
+   .secondary-foot{
+    // background-color: pink;
+    display: inline-block;
+    // display: flex;
+
+    svg{
+        margin: 10px 23px;
+    }
+    
+   }
+
+   
+   .plus-container {
+    position: relative;
+    display: inline-block;
+    bottom: 2em;
+    
+   }
+}

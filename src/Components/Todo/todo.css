@@ -1,7 +1,22 @@
 .single-todo {
   display: flex;
-  flex-direction: column;
+  gap: 11rem;
+  align-items: center;
 }
 .single-todo * {
   margin: 0;
+}
+.single-todo .todo-content {
+  display: flex;
+  flex-direction: column;
+}
+.single-todo .todo-content h1 {
+  font-size: larger;
+}
+.single-todo .todo-content p {
+  font-size: small;
+  color: gray;
+}
+.single-todo .aero {
+  display: block;
 }/*# sourceMappingURL=todo.css.map */
