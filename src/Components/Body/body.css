@@ -1,0 +1,25 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 10px;
+  padding: 0;
+}
+
+.body-container {
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(to bottom, #3787eb, #ffffff 80%);
+}
+.body-container .hero-container svg {
+  margin-top: 10em;
+}
+.body-container .btn {
+  background-color: #3787eb;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 13em;
+}
+.body-container .btn a {
+  color: #ffffff;
+  text-decoration: none;
+}/*# sourceMappingURL=body.css.map */

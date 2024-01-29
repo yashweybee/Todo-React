@@ -1,17 +1,8 @@
-// Define colors
-$primary-color: #3498db; // Header background color
-$text-color: black; // Text color
-$icon-color: #fff; // Icon color
-$button-color: #3787EB; // Button color
-$button-hover-color: #27ae60; // Button hover color
-$input-border-color: #3787EB; // Input border color
-$input-focus-color: #2ecc71; // Input focus color
-$link-color: $button-color; // Link color
-$link-hover-color: $button-hover-color; // Link hover color
+@import "../../index.scss";
 
 .main-header {
-//   background-color: $primary-color;
-  color: $text-color;
+  //   background-color: $primary-color;
+  // color: $text-color;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -27,7 +18,7 @@ $link-hover-color: $button-hover-color; // Link hover color
       align-items: center;
 
       svg {
-        fill: $icon-color;
+        // fill: $icon-color;
         width: 24px;
         height: 24px;
         margin-right: 8px;
@@ -46,13 +37,13 @@ $link-hover-color: $button-hover-color; // Link hover color
 
     .search-form {
       padding: 0;
-     
+
       .inp-box {
         width: 100%;
         padding: 10px;
         padding-left: 19px;
         font-size: 16px;
-        border: 1px solid $input-border-color;
+        border: 1px solid $primary-color;
         border-radius: 50px;
         margin-top: 8px;
         margin-bottom: 0;
@@ -60,7 +51,7 @@ $link-hover-color: $button-hover-color; // Link hover color
 
         &:focus {
           outline: none;
-          border-color: $input-focus-color;
+          border-color: $focus-color;
         }
       }
     }
@@ -74,12 +65,13 @@ $link-hover-color: $button-hover-color; // Link hover color
     .btn,
     a.btn {
       flex: 1;
-      background-color: $button-color;
-      color: $text-color;
+      background-color: $primary-color;
+      color: $white;
+      // color: $text-color;
       padding: 10px;
       margin-right: 8px;
       border: none;
-      border-radius: 5px;
+      border-radius: 15px;
       cursor: pointer;
       font-size: 16px;
       text-decoration: none; // Added for links
@@ -89,7 +81,7 @@ $link-hover-color: $button-hover-color; // Link hover color
       }
 
       &:hover {
-        background-color: $button-hover-color;
+        background-color: $focus-color;
       }
     }
   }

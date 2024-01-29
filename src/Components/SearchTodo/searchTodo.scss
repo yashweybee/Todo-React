@@ -1,57 +1,36 @@
-// .search-container{
-//     // margin: auto;
-//     // margin: 0 10px;
-//     display: flex;
-
-//     .search-form{
-//         margin: auto;
-
-//         .inp-box{
-//             width: auto;
-//             padding:  10px 20px;
-//             font-size: 17px;
-//             border: 2px solid silver;
-//             border-radius: 10px;
-//             // border-left: ;
-//         }
-//     }
-// }
-
-// SCSS
+@import "../../index.scss";
 
 .search-container {
-    text-align: center;
-    padding: 20px; // Adjust padding according to your design
-    background-color: #f9f9f9; // Background color for the container
-  
-    .search-form {
-      max-width: 300px; // Adjust the maximum width according to your design
-      margin: 0 auto; // Center the form
+  text-align: center;
+  padding: 20px; // Adjust padding according to your design
+
+  .search-form {
+    max-width: 300px; // Adjust the maximum width according to your design
+    margin: 0 auto; // Center the form
+    padding: 10px;
+
+    .inp-box {
+      width: 100%;
       padding: 10px;
-  
-      .inp-box {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-top: 8px; // Adjust margin according to your design
-        box-sizing: border-box;
-  
-        &:focus {
-          outline: none;
-          border-color: $primary-color; // Use your primary color for focus
-        }
+      font-size: 16px;
+      border: 1px solid $secondary-color;
+      border-radius: 5px;
+      margin-top: 8px; // Adjust margin according to your design
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color; // Use your primary color for focus
       }
     }
   }
-  
-  // Media query for larger screens (optional)
-  @media (min-width: 768px) {
-    .search-container {
-      .search-form {
-        max-width: 400px; // Adjust for larger screens
-      }
+}
+
+// Media query for larger screens (optional)
+@media (min-width: 768px) {
+  .search-container {
+    .search-form {
+      max-width: 400px; // Adjust for larger screens
     }
   }
-  
+}

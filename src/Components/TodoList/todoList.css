@@ -1,26 +1,25 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+
 .todo-list {
-  background-color: #f9f9f9;
   padding: 20px;
-  height: 100vh;
 }
 
 .todoContainer {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  background-color: #fff;
   padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  width: 20em;
   /* Hide the browser's default checkbox */
   /* Create a custom checkbox */
   /* On mouse-over, add a grey background color */
   /* When the checkbox is checked, add a blue background */
   /* Create the checkmark/indicator (hidden when not checked) */
   /* Show the checkmark when checked */
-}
-.todoContainer:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .todoContainer .check-container {
   display: block;
@@ -46,14 +45,13 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
   border-radius: 50%;
 }
 .todoContainer .check-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 .todoContainer .check-container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #3787eb;
 }
 .todoContainer .checkmark:after {
   content: "";
@@ -68,7 +66,7 @@
   top: 5px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid #ffffff;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }

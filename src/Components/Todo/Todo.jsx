@@ -1,5 +1,6 @@
 import React from "react";
 import "./todo.css";
+import { RightVectorSvg } from "../../utils/svgs";
 
 const Todo = ({ name, isCompleted, deadline }) => {
   return (
@@ -12,7 +13,7 @@ const Todo = ({ name, isCompleted, deadline }) => {
         <p>{deadline}</p>
       </div>
       <div className="aero">
-        <p>&rarr;</p>
+        <RightVectorSvg />
       </div>
     </div>
   );

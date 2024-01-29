@@ -1,5 +1,10 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 10px;
+  padding: 0;
+}
+
 .main-header {
-  color: black;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -16,7 +21,6 @@
 }
 .main-header .heading .left-icon svg,
 .main-header .heading .icons svg {
-  fill: #fff;
   width: 24px;
   height: 24px;
   margin-right: 8px;
@@ -36,7 +40,7 @@
   padding: 10px;
   padding-left: 19px;
   font-size: 16px;
-  border: 1px solid #3787EB;
+  border: 1px solid #3787eb;
   border-radius: 50px;
   margin-top: 8px;
   margin-bottom: 0;
@@ -44,7 +48,7 @@
 }
 .main-header .search-container .search-form .inp-box:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: #1464c7;
 }
 .main-header .btn-container {
   display: flex;
@@ -54,12 +58,12 @@
 .main-header .btn-container .btn,
 .main-header .btn-container a.btn {
   flex: 1;
-  background-color: #3787EB;
-  color: black;
+  background-color: #3787eb;
+  color: #ffffff;
   padding: 10px;
   margin-right: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
@@ -70,7 +74,7 @@
 }
 .main-header .btn-container .btn:hover,
 .main-header .btn-container a.btn:hover {
-  background-color: #27ae60;
+  background-color: #1464c7;
 }
 
 @media (min-width: 768px) {

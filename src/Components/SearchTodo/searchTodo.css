@@ -1,13 +1,34 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 10px;
+  padding: 0;
+}
+
 .search-container {
-  display: flex;
+  text-align: center;
+  padding: 20px;
 }
 .search-container .search-form {
-  margin: auto;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 10px;
 }
 .search-container .search-form .inp-box {
-  width: auto;
-  padding: 10px 20px;
-  font-size: 17px;
-  border: 2px solid silver;
-  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ecf4fd;
+  border-radius: 5px;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+.search-container .search-form .inp-box:focus {
+  outline: none;
+  border-color: #3787eb;
+}
+
+@media (min-width: 768px) {
+  .search-container .search-form {
+    max-width: 400px;
+  }
 }/*# sourceMappingURL=searchTodo.css.map */
