@@ -32,7 +32,15 @@ const mockData = [
         priority: "High",
         deadline: "2024-01-20",
         notificationTime: "18:34"
-    },
+    }, {
+        id: ":r10:",
+        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
+        name: "Task 1",
+        description: "Desc 1",
+        isCompleted: false,
+        deadline: "2024-01-29",
+        notificationTime: "15:57"
+    }
 ]
 
 export default mockData;

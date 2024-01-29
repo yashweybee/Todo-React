@@ -6,23 +6,26 @@ const todoSlice = createSlice(
         name: "todo",
         initialState: {
             todo: mockData
+            // todo: []
         },
         reducers: {
             addTodo: (state, action) => {
 
                 // console.log(action.payload.id);
-
-
                 const index = state.todo.findIndex(todo => todo.id === action.payload.id);
                 if (index === -1) {
                     state.todo.push(action.payload);
                 } else {
                     const copyArray = [...state.todo];
                     copyArray[index] = action.payload
-                    return {
+                    console.log({
                         ...state,
                         todo: copyArray
-                    }
+                    });
+                    // return {
+                    //     ...state,
+                    //     todo: copyArray
+                    // }
                 }
             },
             editTodoState: (state, action) => {

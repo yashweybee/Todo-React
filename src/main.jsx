@@ -27,8 +27,8 @@ const appRouter = createBrowserRouter([
         element: <AddTodo />,
       },
       {
-        path: "/todo/:id",
-        element: <DisplayTodo />,
+        path: "/todo/display/:idParam",
+        element: <AddTodo />,
       },
       {
         path: "/todo/edit/:idParam",

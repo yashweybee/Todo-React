@@ -1,18 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { addTodo } from "../../utils/todoSlice";
+import { setCurrnetPage } from "../../utils/stateSlice";
 const AddTodo = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { idParam } = useParams();
+  const currentPage = useSelector((store) => store?.state?.currentPage);
   const allTodos = useSelector((store) => store?.todo?.todo);
   const [currentTodo, setCurrentTodo] = useState();
+  const taskId = useId();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [priority, setPriority] = useState("High");
-  const [taskDate, setTaskDate] = useState(new Date());
 
   const getFormatedDate = () => {
+    const date = new Date();
+
+    // Get year, month, and day
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+    const day = date.getDate().toString().padStart(2, "0");
+
+    // Formatted date string
+    return `${year}-${month}-${day}`;
+  };
+  const [taskDate, setTaskDate] = useState(getFormatedDate());
+
+  const getFormatedTime = () => {
     const date = new Date();
 
     // Get hours and minutes
@@ -22,33 +39,42 @@ const AddTodo = () => {
     // Formatted time string
     return `${hours}:${minutes}`;
   };
-  const [notificationTime, setNotificationTime] = useState(getFormatedDate());
-
+  const [notificationTime, setNotificationTime] = useState(getFormatedTime());
   const [imgFile, setImgFile] = useState();
-
-  console.log(notificationTime);
 
   useEffect(() => {
     getCurrentTodo();
+    // dispatch(setCurrnetPage("add"));
   }, []);
 
+  console.log(currentPage);
   const getCurrentTodo = () => {
-    if (idParam || pathname.includes("edit")) {
+    if (idParam) {
       const todoToEdit = allTodos.find((todo) => todo.id === idParam);
+
+      if (pathname.includes("edit")) {
+        dispatch(setCurrnetPage("edit"));
+      } else if (pathname.includes("display")) {
+        dispatch(setCurrnetPage("display"));
+      }
+
       if (todoToEdit) {
-        console.log(todoToEdit);
+        // console.log(todoToEdit);
         setCurrentTodo(todoToEdit);
+        setImgFile(todoToEdit.imgFile);
         setName(todoToEdit.name);
         setDesc(todoToEdit.description);
         setTaskDate(todoToEdit.deadline);
-
-        // You can set other fields here if needed
+        setNotificationTime(todoToEdit.notificationTime);
       }
     }
   };
 
   const handleImageInp = (e) => {
-    setImgFile(URL.createObjectURL(e.target.files[0]));
+    const file = e.target.files[0];
+    // const imagePath = `/images/${file.name}`;
+    // console.log(URL.createObjectURL(file));
+    setImgFile(URL.createObjectURL(file));
   };
 
   const handleSelectPriority = (e) => {
@@ -56,31 +82,31 @@ const AddTodo = () => {
     setPriority(e.target.value);
   };
   const handleDateChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setTaskDate(e.target.value);
   };
   const handleNotificationTime = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
+    setNotificationTime(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const todoData = {
-    //   name,
-    //   // Add other fields if needed
-    // };
+    const todoData = {
+      taskId,
+      imgFile,
+      name,
+      description: desc,
+      deadline: taskDate,
+      notificationTime,
+      isCompleted: false,
 
-    // if (idParam) {
-    //   // Edit existing todo
-    //   dispatch(editTodo({ id: idParam, data: todoData }));
-    // } else {
-    //   // Add new todo
-    //   dispatch(addTodo(todoData));
-    // }
-
-    // // Redirect to the todo list after submission
-    // history.push("/todo");
+      // Add other fields if needed
+    };
+    console.log(todoData);
+    dispatch(addTodo(todoData));
+    navigate("/todo");
   };
 
   return (
@@ -98,12 +124,15 @@ const AddTodo = () => {
             name="myImage"
             accept="image/png, image/gif, image/jpeg"
             onChange={handleImageInp}
+            // value={imgFile}
           />
+          {/* <img src={imgFile} alt="images" /> */}
         </label>
 
         <label>
           <p>Task Name</p>
           <input
+            disabled={currentPage === "display"}
             required
             type="text"
             name=""

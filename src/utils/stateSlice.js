@@ -5,7 +5,7 @@ const stateSlice = createSlice(
         name: "state",
         initialState: {
             currentState: "all",
-            currentPage: "List",
+            currentPage: "List", //List, add, edit, display
             searchText: ""
         },
         reducers: {
@@ -14,6 +14,7 @@ const stateSlice = createSlice(
                 state.searchText = ""
             },
             setCurrnetPage: (state, action) => {
+                console.log(action.payload);
                 state.currentPage = action.payload
             },
             setSearchText: (state, action) => {
