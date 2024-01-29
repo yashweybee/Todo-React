@@ -62,14 +62,19 @@ form .time-container input[type=time] {
   font-size: 16px;
   box-sizing: border-box;
 }
-form .calander-container {
-  display: none;
-}
 form .calander-container label {
   font-size: 16px;
   color: #555;
   margin-bottom: 8px;
   display: block;
+}
+form .calander-container input[type=date] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 form p {
   color: #ff4d4f;

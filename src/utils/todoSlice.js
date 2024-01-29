@@ -9,7 +9,21 @@ const todoSlice = createSlice(
         },
         reducers: {
             addTodo: (state, action) => {
-                state.todo.push(action.payload);
+
+                // console.log(action.payload.id);
+
+
+                const index = state.todo.findIndex(todo => todo.id === action.payload.id);
+                if (index === -1) {
+                    state.todo.push(action.payload);
+                } else {
+                    const copyArray = [...state.todo];
+                    copyArray[index] = action.payload
+                    return {
+                        ...state,
+                        todo: copyArray
+                    }
+                }
             },
             editTodoState: (state, action) => {
                 // isComppleted
@@ -19,7 +33,8 @@ const todoSlice = createSlice(
             deleteTodo: (state, action) => {
                 return { ...state, todo: state.todo.filter((todo) => todo.id !== action.payload) };
             },
-            editTodo: (state, action)=>{
+            editTodo: (state, action) => {
+                // const index = 
 
             },
             clearTodo: (state) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setCurrnetState } from "../../utils/stateSlice";
+import { setCurrnetState, setSearchText } from "../../utils/stateSlice";
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./header.css";
 import { AccountSvg, SettingSvg } from "../../utils/svgs";
@@ -11,13 +11,14 @@ const Header = () => {
   const currentPage = useSelector((store) => store?.state?.currentPage);
   const handelAllBtn = () => {
     dispatch(setCurrnetState("all"));
+    // dispatch(setSearchText(""));
 
-    Notification.requestPermission();
-    new Notification("Hello", {
-      body: "Notification Body",
-      icon: "https://www.vkf-renzel.com/out/pictures/generated/product/1/356_356_75/r12044336-01/general-warning-sign-10836-1.jpg?    auto=compress&cs=tinysrgb&dpr=1&w=500",
-      dir: "ltr",
-    });
+    // Notification.requestPermission();
+    // new Notification("Hello", {
+    //   body: "Notification Body",
+    //   icon: "https://www.vkf-renzel.com/out/pictures/generated/product/1/356_356_75/r12044336-01/general-warning-sign-10836-1.jpg?    auto=compress&cs=tinysrgb&dpr=1&w=500",
+    //   dir: "ltr",
+    // });
   };
   const handelActiveBtn = () => {
     dispatch(setCurrnetState("active"));
@@ -36,23 +37,6 @@ const Header = () => {
           <SettingSvg />
         </div>
       </div>
-      {/* {currentPage === "List" && <SearchTodo />} */}
-      {/* {currentPage === "List" && (
-        <div className="btn-container">
-          <Link className="btn" to="/todo/add">
-            Add
-          </Link>
-          <button className="btn" onClick={handelAllBtn}>
-            All
-          </button>
-          <button className="btn" onClick={handelActiveBtn}>
-            Active
-          </button>
-          <button className="btn" onClick={handelCompleted}>
-            Completed
-          </button>
-        </div>
-      )} */}
       <SearchTodo />
       <div className="btn-container">
         <Link className="btn" to="/todo/add">

@@ -1,9 +1,9 @@
-import React, { useId, useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../utils/todoSlice";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import checkValidation from "../../utils/validation";
 import "../AddTodo/addTodo.css";
 import { setCurrnetPage } from "../../utils/stateSlice";
@@ -12,57 +12,59 @@ import { Link } from "react-router-dom";
 const AddTodo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  console.log(pathname);
   const taskId = useId();
   const [taskDate, setTaskDate] = useState(new Date());
   const [priority, setPriority] = useState("High");
   const [errorMessage, setErrorMessage] = useState("");
-  const taskRef = useRef(null);
-  const descRef = useRef(null);
-  const notifyTimeRed = useRef(null);
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [notifyTime, setNotifyTime] = useState(new Date().toLocaleTimeString());
 
-  dispatch(setCurrnetPage("AddTodoPage"));
+  useEffect(() => {
+    dispatch(setCurrnetPage("AddTodoPage"));
+  }, []);
 
   const handleRadioBtn = (e) => {
     setPriority(e.target.value);
   };
 
-  const handleCalanderValue = (val) => {
-    setTaskDate(val);
+  const handleCalanderValue = (e) => {
+    // console.log(e.target.value);
+    setTaskDate(e.target.value);
   };
 
   const handleTaskAdd = (e) => {
     e.preventDefault();
-    const message = checkValidation(
-      taskRef.current.value,
-      descRef.current.value
-    );
+    const message = checkValidation(name, desc);
 
     setErrorMessage(message);
 
     if (message) return;
-    console.log(notifyTimeRed.current.value);
+    console.log(notifyTime);
 
     // dispatch(
     //   addTodo({
     //     id: taskId,
-    //     name: taskRef.current.value,
-    //     description: descRef.current.value,
+    //     name: name,
+    //     description: desc,
     //     isCompleted: false,
     //     priority: priority,
-    //     deadline: taskDate.toJSON(),
-    //     notificationTime: notifyTimeRed.current.value,
+    //     deadline: taskDate,
+    //     notificationTime: notifyTime,
     //   })
     // );
     navigate("/todo");
 
     console.log({
       id: taskId,
-      name: taskRef.current.value,
-      description: descRef.current.value,
+      name: name,
+      description: desc,
       isCompleted: false,
       priority: priority,
-      deadline: taskDate.toJSON(),
-      notificationTime: notifyTimeRed.current.value,
+      deadline: taskDate.toLocaleDateString(),
+      notificationTime: notifyTime,
     });
   };
 
@@ -73,13 +75,15 @@ const AddTodo = () => {
         <h1>Create new task</h1>
       </div>
       <form>
+        {/* <input type="hidden" name="taskID" id="" value={taskId} /> */}
         <label>Task Name</label>
         <input
           placeholder="Task Name"
           required
-          ref={taskRef}
           type="text"
           name="TaskName"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <label>Priority</label>
@@ -114,32 +118,39 @@ const AddTodo = () => {
             Low
           </label>
         </div>
-        <div className="time-container">
-          <label htmlFor="appt">Notify me at:</label>
 
+        <label>Notify me at:</label>
+        <div className="time-container">
           <input
-            ref={notifyTimeRed}
+            value={notifyTime}
+            onChange={(e) => setNotifyTime(e.target.value)}
             type="time"
             id="notifyTimer"
             name="notification Time"
-            // min="09:00"
-            // max="18:00"
             required
           />
         </div>
-        <div>
-          <button type="button">Date</button>
-        </div>
-        <div className="calander-container">
-          {/* <Calendar onChange={handleCalanderValue} value={taskDate} /> */}
-          <input type="date" name="" id="" />
-        </div>
-        <div>
-          <p>{errorMessage}</p>
+
+        <label>Date</label>
+        <div style={{ display: "block" }} className="calander-container">
+          <input
+            type="date"
+            name="todo-date"
+            value={taskDate}
+            onChange={handleCalanderValue}
+          />
         </div>
 
         <label>Description</label>
-        <input ref={descRef} type="text" name="description" />
+        <input
+          type="text"
+          name="description"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
+        <div>
+          <p>{errorMessage}</p>
+        </div>
         <div>
           <button type="submit" onClick={handleTaskAdd}>
             Add
