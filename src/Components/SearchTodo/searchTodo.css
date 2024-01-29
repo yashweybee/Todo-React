@@ -1,25 +1,30 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 10px 10px;
   padding: 0;
 }
 
 .search-container {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 .search-container .search-form {
   max-width: 300px;
   margin: 0 auto;
   padding: 10px;
+  border: 1px solid #3787eb;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+}
+.search-container .search-form span {
+  margin-left: 10px;
+  margin-top: 2px;
 }
 .search-container .search-form .inp-box {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ecf4fd;
-  border-radius: 5px;
-  margin-top: 8px;
+  padding: 0 10px;
+  font-size: 20px;
+  border: none;
   box-sizing: border-box;
 }
 .search-container .search-form .inp-box:focus {

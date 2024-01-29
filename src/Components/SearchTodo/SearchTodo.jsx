@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./searchTodo.css";
 import { useDispatch } from "react-redux";
 import { setSearchText } from "../../utils/stateSlice";
+import { SearchSvg } from "../../utils/svgs";
+import "./searchTodo.css";
 
 const SearchTodo = () => {
   const [text, setText] = useState("");
@@ -15,6 +16,9 @@ const SearchTodo = () => {
   return (
     <div className="search-container">
       <form className="search-form" onSubmit={handeSubmit}>
+        <span>
+          <SearchSvg />
+        </span>
         <input
           className="inp-box"
           placeholder="Search.."

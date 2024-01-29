@@ -2,20 +2,30 @@
 
 .search-container {
   text-align: center;
-  padding: 20px; // Adjust padding according to your design
+  padding: 10px;
 
   .search-form {
-    max-width: 300px; // Adjust the maximum width according to your design
+    max-width: 300px;
     margin: 0 auto; // Center the form
     padding: 10px;
+    border: 1px solid $primary-color;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 10px;
+      margin-top: 2px;
+    }
 
     .inp-box {
       width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid $secondary-color;
-      border-radius: 5px;
-      margin-top: 8px; // Adjust margin according to your design
+      padding: 0 10px;
+
+      font-size: 20px;
+      border: none;
+      // border-radius: 5px;
+      // margin-top: 8px; // Adjust margin according to your design
       box-sizing: border-box;
 
       &:focus {

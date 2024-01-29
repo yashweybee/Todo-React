@@ -31,32 +31,6 @@
     }
   }
 
-  .search-container {
-    // margin-top: 10px;
-    display: block;
-
-    .search-form {
-      padding: 0;
-
-      .inp-box {
-        width: 100%;
-        padding: 10px;
-        padding-left: 19px;
-        font-size: 16px;
-        border: 1px solid $primary-color;
-        border-radius: 50px;
-        margin-top: 8px;
-        margin-bottom: 0;
-        box-sizing: border-box;
-
-        &:focus {
-          outline: none;
-          border-color: $focus-color;
-        }
-      }
-    }
-  }
-
   .btn-container {
     display: flex;
     margin-top: 10px;
