@@ -5,7 +5,7 @@ const mockData = [
         description: "This is description",
         isCompleted: false,
         priority: "High",
-        deadline: "31-01-2024",
+        deadline: "2024-01-31",
         notificationTime: "18:34"
     },
     {
@@ -14,7 +14,7 @@ const mockData = [
         description: "This is description",
         isCompleted: true,
         priority: "Low",
-        deadline: "31-01-2024",
+        deadline: "2024-02-10",
         notificationTime: "18:34"
     }, {
         id: "3",
@@ -22,7 +22,7 @@ const mockData = [
         description: "This is description",
         isCompleted: true,
         priority: "Medium",
-        deadline: "31-01-2024",
+        deadline: "2024-01-13",
         notificationTime: "18:34"
     }, {
         id: "4",
@@ -30,7 +30,7 @@ const mockData = [
         description: "This is description",
         isCompleted: false,
         priority: "High",
-        deadline: "31-01-2024",
+        deadline: "2024-01-20",
         notificationTime: "18:34"
     },
 ]

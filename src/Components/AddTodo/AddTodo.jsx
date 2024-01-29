@@ -1,161 +1,168 @@
-import React, { useEffect, useId, useRef, useState } from "react";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../../utils/todoSlice";
-import { useLocation, useNavigate } from "react-router";
-import checkValidation from "../../utils/validation";
-import "../AddTodo/addTodo.css";
-import { setCurrnetPage } from "../../utils/stateSlice";
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useLocation, useParams } from "react-router-dom";
 const AddTodo = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
-  const taskId = useId();
-  const [taskDate, setTaskDate] = useState(new Date());
-  const [priority, setPriority] = useState("High");
-  const [errorMessage, setErrorMessage] = useState("");
+  const { idParam } = useParams();
+  const allTodos = useSelector((store) => store?.todo?.todo);
+  const [currentTodo, setCurrentTodo] = useState();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [notifyTime, setNotifyTime] = useState(new Date().toLocaleTimeString());
+  const [priority, setPriority] = useState("High");
+  const [taskDate, setTaskDate] = useState(new Date());
+
+  const getFormatedDate = () => {
+    const date = new Date();
+
+    // Get hours and minutes
+    const hours = date.getHours().toString().padStart(2, "0"); // Ensure two-digit format
+    const minutes = date.getMinutes().toString().padStart(2, "0"); // Ensure two-digit format
+
+    // Formatted time string
+    return `${hours}:${minutes}`;
+  };
+  const [notificationTime, setNotificationTime] = useState(getFormatedDate());
+
+  const [imgFile, setImgFile] = useState();
+
+  console.log(notificationTime);
 
   useEffect(() => {
-    dispatch(setCurrnetPage("AddTodoPage"));
+    getCurrentTodo();
   }, []);
 
-  const handleRadioBtn = (e) => {
-    setPriority(e.target.value);
+  const getCurrentTodo = () => {
+    if (idParam || pathname.includes("edit")) {
+      const todoToEdit = allTodos.find((todo) => todo.id === idParam);
+      if (todoToEdit) {
+        console.log(todoToEdit);
+        setCurrentTodo(todoToEdit);
+        setName(todoToEdit.name);
+        setDesc(todoToEdit.description);
+        setTaskDate(todoToEdit.deadline);
+
+        // You can set other fields here if needed
+      }
+    }
   };
 
-  const handleCalanderValue = (e) => {
+  const handleImageInp = (e) => {
+    setImgFile(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleSelectPriority = (e) => {
+    // console.log(e.target.value);
+    setPriority(e.target.value);
+  };
+  const handleDateChange = (e) => {
     // console.log(e.target.value);
     setTaskDate(e.target.value);
   };
+  const handleNotificationTime = (e) => {
+    console.log(e.target.value);
+  };
 
-  const handleTaskAdd = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const message = checkValidation(name, desc);
 
-    setErrorMessage(message);
+    // const todoData = {
+    //   name,
+    //   // Add other fields if needed
+    // };
 
-    if (message) return;
-    console.log(notifyTime);
+    // if (idParam) {
+    //   // Edit existing todo
+    //   dispatch(editTodo({ id: idParam, data: todoData }));
+    // } else {
+    //   // Add new todo
+    //   dispatch(addTodo(todoData));
+    // }
 
-    // dispatch(
-    //   addTodo({
-    //     id: taskId,
-    //     name: name,
-    //     description: desc,
-    //     isCompleted: false,
-    //     priority: priority,
-    //     deadline: taskDate,
-    //     notificationTime: notifyTime,
-    //   })
-    // );
-    navigate("/todo");
-
-    console.log({
-      id: taskId,
-      name: name,
-      description: desc,
-      isCompleted: false,
-      priority: priority,
-      deadline: taskDate.toLocaleDateString(),
-      notificationTime: notifyTime,
-    });
+    // // Redirect to the todo list after submission
+    // history.push("/todo");
   };
 
   return (
     <div>
-      <div className="head">
+      <div className="heading">
         <Link to="/todo">Back</Link>
-        <h1>Create new task</h1>
       </div>
-      <form>
-        {/* <input type="hidden" name="taskID" id="" value={taskId} /> */}
-        <label>Task Name</label>
-        <input
-          placeholder="Task Name"
-          required
-          type="text"
-          name="TaskName"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
 
-        <label>Priority</label>
-
-        <div className="radioContainer">
-          <label>
-            <input
-              onChange={handleRadioBtn}
-              type="radio"
-              name="priority"
-              value="High"
-              defaultChecked
-            ></input>
-            High
-          </label>
-          <label>
-            <input
-              onChange={handleRadioBtn}
-              type="radio"
-              name="priority"
-              value="Medium"
-            ></input>
-            Medium
-          </label>
-          <label>
-            <input
-              onChange={handleRadioBtn}
-              type="radio"
-              name="priority"
-              value="Low"
-            ></input>
-            Low
-          </label>
-        </div>
-
-        <label>Notify me at:</label>
-        <div className="time-container">
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p>Avatar</p>
           <input
-            value={notifyTime}
-            onChange={(e) => setNotifyTime(e.target.value)}
-            type="time"
-            id="notifyTimer"
-            name="notification Time"
             required
+            type="file"
+            name="myImage"
+            accept="image/png, image/gif, image/jpeg"
+            onChange={handleImageInp}
           />
-        </div>
+        </label>
 
-        <label>Date</label>
-        <div style={{ display: "block" }} className="calander-container">
+        <label>
+          <p>Task Name</p>
+          <input
+            required
+            type="text"
+            name=""
+            id=""
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+
+        <label>
+          <p>Priority</p>
+          <select
+            name="priority"
+            id="cars"
+            onChange={handleSelectPriority}
+            value={priority}
+          >
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </label>
+
+        <label>
+          <p>Date</p>
           <input
             type="date"
-            name="todo-date"
+            id="start"
+            name="trip-start"
             value={taskDate}
-            onChange={handleCalanderValue}
+            onChange={handleDateChange}
           />
-        </div>
+        </label>
+        <label>
+          <p>Notyfy me at</p>
+          <input
+            type="time"
+            id="notify"
+            name="notification time"
+            min="12:00"
+            max="18:00"
+            required
+            onChange={handleNotificationTime}
+            value={notificationTime}
+          />
+        </label>
 
-        <label>Description</label>
-        <input
-          type="text"
-          name="description"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
-        <div>
-          <p>{errorMessage}</p>
-        </div>
-        <div>
-          <button type="submit" onClick={handleTaskAdd}>
-            Add
-          </button>
-        </div>
+        <label>
+          <p>Description</p>
+          <input
+            required
+            type="text"
+            name=""
+            id=""
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        </label>
+        <button type="submit">{idParam ? "Edit Todo" : "Add Todo"}</button>
       </form>
     </div>
   );
