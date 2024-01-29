@@ -1,0 +1,93 @@
+.todo-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  .heading {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    margin-bottom: 20px;
+
+    a {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #1f618d;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  form {
+    label {
+      display: block;
+      margin-bottom: 10px;
+
+      p {
+        margin: 15px auto;
+        font-weight: bold;
+        font-size: larger;
+      }
+
+      input,
+      select,
+      #description {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        &:focus {
+          outline: none;
+          border-color: #3498db;
+        }
+      }
+
+      #description {
+        // background-color: black;
+      }
+
+      input[type="file"] {
+        //   display: none; // Hide the file input
+      }
+
+      .inp-Img {
+        // Your file input styling
+        // ...
+
+        & + img {
+          // Optional styling for the image preview
+          max-width: 100%;
+          margin-top: 10px;
+        }
+      }
+
+      button {
+        width: 100%;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #1f618d;
+        }
+      }
+    }
+  }
+}

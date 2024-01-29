@@ -107,7 +107,10 @@ const TodoList = () => {
                             <span className="checkmark"></span>
                           </label>
 
-                          <Link className="todo-item" to={"/todo/" + todo.id}>
+                          <Link
+                            className="todo-item"
+                            to={"/todo/display/" + todo.id}
+                          >
                             <Todo
                               name={todo.name}
                               isCompleted={todo.isCompleted}

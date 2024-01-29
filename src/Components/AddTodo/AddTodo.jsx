@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addTodo } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
+import "../AddTodo/addTodo.css";
 const AddTodo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -110,9 +111,10 @@ const AddTodo = () => {
   };
 
   return (
-    <div>
+    <div className="todo-form">
       <div className="heading">
         <Link to="/todo">Back</Link>
+        <h1>{idParam ? "Edit" : "Create"} Task</h1>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -123,8 +125,8 @@ const AddTodo = () => {
             type="file"
             name="myImage"
             accept="image/png, image/gif, image/jpeg"
+            className="inp-Img"
             onChange={handleImageInp}
-            // value={imgFile}
           />
           {/* <img src={imgFile} alt="images" /> */}
         </label>
@@ -135,6 +137,7 @@ const AddTodo = () => {
             disabled={currentPage === "display"}
             required
             type="text"
+            placeholder="Go to gym"
             name=""
             id=""
             value={name}
@@ -167,7 +170,7 @@ const AddTodo = () => {
           />
         </label>
         <label>
-          <p>Notyfy me at</p>
+          <p>Notify me at</p>
           <input
             type="time"
             id="notify"
@@ -182,16 +185,20 @@ const AddTodo = () => {
 
         <label>
           <p>Description</p>
-          <input
+          <textarea
             required
             type="text"
+            placeholder="Today workout Plan..."
             name=""
-            id=""
+            rows={5}
+            id="description"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
         </label>
-        <button type="submit">{idParam ? "Edit Todo" : "Add Todo"}</button>
+        <label>
+          <button type="submit">{idParam ? "Edit" : "Create"} Task</button>
+        </label>
       </form>
     </div>
   );
