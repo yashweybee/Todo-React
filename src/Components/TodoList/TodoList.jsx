@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { editTodoState } from "../../utils/todoSlice";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import "./todoList.css";
 
 const TodoList = () => {
@@ -58,37 +59,71 @@ const TodoList = () => {
     );
   };
   console.log(todoData);
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(todoData);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setTodoData(items);
+  };
   return (
     <>
       <Header />
 
       <div className="todo-list">
-        {todoData.length === 0 ? (
-          <p>not available</p>
-        ) : (
-          todoData.map((todo) => (
-            <div key={todo.id} className="todoContainer">
-              <label className="check-container">
-                <input
-                  className="inp-checkbox"
-                  type="checkbox"
-                  onChange={handleCheckBox}
-                  value={todo.id}
-                  checked={todo.isCompleted}
-                />
-                <span className="checkmark"></span>
-              </label>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="todoData">
+            {(provided) => (
+              <div
+                className="todoData"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {todoData.map((todo, index) => {
+                  return (
+                    <Draggable
+                      key={todo.id}
+                      draggableId={todo.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          className="todoContainer"
+                          ref={provided.innerRef}
+                          // {...provided.placeholder}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <label className="check-container">
+                            <input
+                              className="inp-checkbox"
+                              type="checkbox"
+                              onChange={handleCheckBox}
+                              value={todo.id}
+                              checked={todo.isCompleted}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
 
-              <Link className="todo-item" to={"/todo/" + todo.id}>
-                <Todo
-                  name={todo.name}
-                  isCompleted={todo.isCompleted}
-                  deadline={todo.deadline}
-                />
-              </Link>
-            </div>
-          ))
-        )}
+                          <Link className="todo-item" to={"/todo/" + todo.id}>
+                            <Todo
+                              name={todo.name}
+                              isCompleted={todo.isCompleted}
+                              deadline={todo.deadline}
+                            />
+                          </Link>
+                          {provided.placeholder}
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
 
       <Footer />

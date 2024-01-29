@@ -7,6 +7,7 @@ import {
   PlusSvg,
 } from "../../utils/svgs";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -15,9 +16,11 @@ const Footer = () => {
         <HomeSvg />
         <CalenderSvg />
       </div>
-      <div className="plus-container">
-        <PlusSvg />
-      </div>
+      <Link to="/todo/add">
+        <div className="plus-container">
+          <PlusSvg />
+        </div>
+      </Link>
       <div className="right-foot secondary-foot">
         <ChatSvg />
         <AccountNewSvg />
