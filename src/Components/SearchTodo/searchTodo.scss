@@ -2,19 +2,19 @@
 
 .search-container {
   text-align: center;
-  padding: 10px;
+  padding: 10px 0;
 
   .search-form {
-    max-width: 300px;
-    margin: 0 auto; // Center the form
-    padding: 10px;
+    margin: 0; // Center the form
+    padding: 4px;
     border: 1px solid $primary-color;
     border-radius: 25px;
     display: flex;
     align-items: center;
 
     span {
-      margin-left: 10px;
+      padding-left: 10px;
+      // margin-left: 10px 0;
       margin-top: 2px;
     }
 

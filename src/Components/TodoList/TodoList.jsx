@@ -4,61 +4,76 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { editTodoState } from "../../utils/todoSlice";
+import { onChangeCheckBox } from "../../utils/todoSlice";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import "./todoList.css";
+import Checkbox from "../Checkbox/Checkbox";
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const todoStoredata = useSelector((store) => store?.todo?.todo);
+  const sortBy = useSelector((store) => store?.state?.sortBy);
   const { currentState, searchText } = useSelector((store) => store?.state);
   const [todoData, setTodoData] = useState(todoStoredata);
-  const [taskCompleted, setTaskCompleted] = useState(false);
+  const [copyTodoData, setCopyTodoData] = useState(todoData);
 
   const setTodoDataOnStateChange = () => {
     if (currentState == "active") {
       const todoData2 = todoStoredata.filter(
         (todo) => todo.isCompleted === false
       );
-      setSearchFunc(todoData2);
+      sortByFunc(todoData2);
+      setCopyTodoData(todoData2);
       // setTodoData(todoData);
     } else if (currentState == "all") {
       // setTodoData(todoStoredata);
-      setSearchFunc(todoStoredata);
+      setCopyTodoData(todoStoredata);
+      sortByFunc(todoStoredata);
     } else if (currentState == "completed") {
       // console.log("com");
       const todoData2 = todoStoredata.filter(
         (todo) => todo.isCompleted === true
       );
-      // setTodoData(todoData);
-      setSearchFunc(todoData2);
+      setCopyTodoData(todoData2);
+      sortByFunc(todoData2);
     }
+  };
+
+  const sortByFunc = (todoData) => {
+    let tempData = [...todoData];
+    if (sortBy === "Name") {
+      tempData.sort((a, b) => a.name.localeCompare(b.name));
+      setTodoData(tempData);
+    } else if (sortBy === "Date") {
+      tempData.sort((p1, p2) =>
+        p1.deadline > p2.deadline ? 1 : p1.deadline < p2.deadline ? -1 : 0
+      );
+      // console.log(tempData);
+      setTodoData(tempData);
+    } else if (sortBy === "Created/Modified") {
+      setTodoData(copyTodoData);
+    }
+
+    setSearchFunc(tempData);
   };
 
   const setSearchFunc = (todoData) => {
     if (searchText.length === 0) {
       setTodoData(todoData);
+      // sortByFunc(todoData);
     } else {
-      // if (searchText.length !== 0) {
       const searchTodo = todoData.filter((todo) =>
-        todo.name.includes(searchText)
+        todo.name.toLowerCase().includes(searchText.toLowerCase())
       );
       setTodoData(searchTodo);
+      // sortByFunc(searchTodo);
+      // console.log(searchTodo);
     }
   };
 
   useEffect(() => {
     setTodoDataOnStateChange();
-  }, [taskCompleted, todoStoredata, currentState, searchText]);
-
-  const handleCheckBox = (e) => {
-    setTaskCompleted(!taskCompleted);
-
-    dispatch(
-      editTodoState({ id: e.target.value, taskCompleted: taskCompleted })
-    );
-  };
-  // console.log(todoData);
+  }, [todoStoredata, currentState, searchText, sortBy]);
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -68,6 +83,12 @@ const TodoList = () => {
     items.splice(result.destination.index, 0, reorderedItem);
     setTodoData(items);
   };
+
+  const handleCheckbox = (todo) => {
+    // console.log(e.target.value);
+    dispatch(onChangeCheckBox(todo));
+  };
+  console.log(todoData);
   return (
     <>
       <Header />
@@ -91,21 +112,9 @@ const TodoList = () => {
                         <div
                           className="todoContainer"
                           ref={provided.innerRef}
-                          // {...provided.placeholder}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
-                          <label className="check-container">
-                            <input
-                              className="inp-checkbox"
-                              type="checkbox"
-                              onChange={handleCheckBox}
-                              value={todo.taskId}
-                              checked={todo.isCompleted}
-                            />
-                            <span className="checkmark"></span>
-                          </label>
-
                           <Link
                             className="todo-item"
                             to={"/todo/display/" + todo.taskId}
@@ -114,8 +123,13 @@ const TodoList = () => {
                               name={todo.name}
                               isCompleted={todo.isCompleted}
                               deadline={todo.deadline}
+                              imgFile={todo.imgFile}
                             />
                           </Link>
+                          <Checkbox
+                            onClick={() => handleCheckbox(todo)}
+                            defaultChecked={todo.isCompleted}
+                          />
                           {provided.placeholder}
                         </div>
                       )}

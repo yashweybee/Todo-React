@@ -1,8 +1,8 @@
 const mockData = [
     {
         taskId: "1",
-        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
-        name: "Task 1",
+        imgFile: "../gym-pic.jpg",
+        name: "a Task 1",
         description: "This is description",
         isCompleted: false,
         priority: "High",
@@ -11,8 +11,8 @@ const mockData = [
     },
     {
         taskId: "2",
-        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
-        name: "Task 2",
+        imgFile: "../gym-pic.jpg",
+        name: "v Task 2",
         description: "This is description",
         isCompleted: true,
         priority: "Low",
@@ -20,7 +20,7 @@ const mockData = [
         notificationTime: "18:34"
     }, {
         taskId: "3",
-        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
+        imgFile: "../gym-pic.jpg",
         name: "Task 3",
         description: "This is description",
         isCompleted: true,
@@ -29,8 +29,8 @@ const mockData = [
         notificationTime: "18:34"
     }, {
         taskId: "4",
-        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
-        name: "Task 4",
+        imgFile: "../gym-pic.jpg",
+        name: "Z Task 4",
         description: "This is description",
         isCompleted: false,
         priority: "High",
@@ -38,8 +38,8 @@ const mockData = [
         notificationTime: "18:34"
     }, {
         taskId: ":r10:",
-        imgFile: "blob:http://localhost:5173/98263372-3105-4dc7-b48e-a58a2d685cd5",
-        name: "Task 1",
+        imgFile: "../gym-pic.jpg",
+        name: "C Task 1",
         description: "Desc 1",
         isCompleted: false,
         deadline: "2024-01-29",

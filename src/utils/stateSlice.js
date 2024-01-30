@@ -6,7 +6,8 @@ const stateSlice = createSlice(
         initialState: {
             currentState: "all",
             currentPage: "List", //List, add, edit, display
-            searchText: ""
+            searchText: "",
+            sortBy: "", //Name, Date, Created/Modified
         },
         reducers: {
             setCurrnetState: (state, action) => {
@@ -20,11 +21,14 @@ const stateSlice = createSlice(
             setSearchText: (state, action) => {
                 // console.log(action.payload);
                 state.searchText = action.payload
+            },
+            setSortBy: (state, action) => {
+                state.sortBy = action.payload
             }
 
         }
     }
 )
 
-export const { setCurrnetState, setCurrnetPage, setSearchText } = stateSlice.actions;
+export const { setCurrnetState, setCurrnetPage, setSearchText, setSortBy } = stateSlice.actions;
 export default stateSlice.reducer //stateReducer

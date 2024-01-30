@@ -1,22 +1,32 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+
 .single-todo {
   display: flex;
-  gap: 11rem;
-  align-items: center;
-}
-.single-todo * {
-  margin: 0;
 }
 .single-todo .todo-content {
   display: flex;
   flex-direction: column;
+  margin-left: 1em;
 }
 .single-todo .todo-content h1 {
-  font-size: larger;
+  font-size: large;
 }
-.single-todo .todo-content p {
+.single-todo .todo-content span {
   font-size: small;
-  color: gray;
+  color: #8a8a8a;
 }
 .single-todo .aero {
   display: block;
+  margin-left: 6em;
+  margin-top: 1.9em;
+}
+.single-todo .todo-img img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=todo.css.map */

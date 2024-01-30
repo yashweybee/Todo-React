@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setCurrnetState, setSearchText } from "../../utils/stateSlice";
+import {
+  setCurrnetState,
+  setSearchText,
+  setSortBy,
+} from "../../utils/stateSlice";
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./header.css";
 import { AccountSvg, SettingSvg } from "../../utils/svgs";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
+
   const currentPage = useSelector((store) => store?.state?.currentPage);
   const handelAllBtn = () => {
     dispatch(setCurrnetState("all"));
@@ -29,6 +35,15 @@ const Header = () => {
   };
   // console.log("Render header");
 
+  const handleSortSelect = (e) => {
+    // console.log(e.target.value);
+    dispatch(setSortBy(e.target.value));
+  };
+
+  const toogleSortSelect = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="main-header">
       <div className="heading">
@@ -39,10 +54,20 @@ const Header = () => {
       </div>
       <SearchTodo />
       <div className="btn-container">
-        {/* <Link className="btn" to="/todo/add">
-          Add
-        </Link> */}
-        <button className="btn">Sort</button>
+        <select
+          name="sort by"
+          className="btn drop-down"
+          onChange={handleSortSelect}
+          onClick={toogleSortSelect}
+        >
+          <option value="" defaultChecked>
+            {!isOpen ? "Sort" : "None"}
+          </option>
+          <option value="Created/Modified">Created</option>
+          <option value="Name">Name</option>
+          <option value="Date">Date</option>
+        </select>
+
         <button className="btn" onClick={handelAllBtn}>
           All
         </button>
