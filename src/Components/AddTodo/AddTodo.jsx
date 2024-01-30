@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addTodo } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
+import { CameraSvg } from "../../utils/svgs";
 const AddTodo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,36 +46,37 @@ const AddTodo = () => {
 
   useEffect(() => {
     getCurrentTodo();
-    // dispatch(setCurrnetPage("add"));
-  }, []);
+  }, [idParam, pathname]);
 
-  console.log(currentPage);
   const getCurrentTodo = () => {
     if (idParam) {
-      const todoToEdit = allTodos.find((todo) => todo.id === idParam);
+      const todoToEdit = allTodos.find((todo) => todo.taskId === idParam);
 
       if (pathname.includes("edit")) {
         dispatch(setCurrnetPage("edit"));
       } else if (pathname.includes("display")) {
         dispatch(setCurrnetPage("display"));
+      } else {
+        dispatch(setCurrnetPage("add"));
       }
 
       if (todoToEdit) {
-        // console.log(todoToEdit);
         setCurrentTodo(todoToEdit);
         setImgFile(todoToEdit.imgFile);
         setName(todoToEdit.name);
         setDesc(todoToEdit.description);
         setTaskDate(todoToEdit.deadline);
         setNotificationTime(todoToEdit.notificationTime);
+        setPriority(todoToEdit.priority);
       }
     }
   };
+  // console.log(currentPage, idParam);
 
   const handleImageInp = (e) => {
     const file = e.target.files[0];
     // const imagePath = `/images/${file.name}`;
-    // console.log(URL.createObjectURL(file));
+    console.log(URL.createObjectURL(file));
     setImgFile(URL.createObjectURL(file));
   };
 
@@ -95,17 +97,16 @@ const AddTodo = () => {
     e.preventDefault();
 
     const todoData = {
-      taskId,
-      imgFile,
-      name,
+      taskId: taskId,
+      imgFile: imgFile,
+      name: name,
       description: desc,
       deadline: taskDate,
-      notificationTime,
+      notificationTime: notificationTime,
       isCompleted: false,
-
-      // Add other fields if needed
+      priority: priority,
     };
-    console.log(todoData);
+    // console.log(todoData);
     dispatch(addTodo(todoData));
     navigate("/todo");
   };
@@ -119,7 +120,9 @@ const AddTodo = () => {
 
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Avatar</p>
+          {/* <p>Avatar</p> */}
+          <img src={imgFile || "../gym-pic.jpg"} alt="image" />
+          <CameraSvg />
           <input
             required
             type="file"
@@ -128,20 +131,19 @@ const AddTodo = () => {
             className="inp-Img"
             onChange={handleImageInp}
           />
-          {/* <img src={imgFile} alt="images" /> */}
         </label>
 
         <label>
           <p>Task Name</p>
           <input
-            disabled={currentPage === "display"}
             required
             type="text"
             placeholder="Go to gym"
-            name=""
+            // name=""
             id=""
             value={name}
             onChange={(e) => setName(e.target.value)}
+            disabled={currentPage === "display"}
           />
         </label>
 
@@ -149,7 +151,7 @@ const AddTodo = () => {
           <p>Priority</p>
           <select
             name="priority"
-            id="cars"
+            id="priority"
             onChange={handleSelectPriority}
             value={priority}
           >
@@ -175,8 +177,6 @@ const AddTodo = () => {
             type="time"
             id="notify"
             name="notification time"
-            min="12:00"
-            max="18:00"
             required
             onChange={handleNotificationTime}
             value={notificationTime}
@@ -196,9 +196,21 @@ const AddTodo = () => {
             onChange={(e) => setDesc(e.target.value)}
           />
         </label>
-        <label>
-          <button type="submit">{idParam ? "Edit" : "Create"} Task</button>
-        </label>
+
+        {currentPage === "display" ? (
+          <div className="display-btns">
+            <Link className="btn-link back" to="/todo">
+              Back
+            </Link>
+            <Link className="btn-link" to={"/todo/edit/" + idParam}>
+              Edit Task
+            </Link>
+          </div>
+        ) : (
+          <label>
+            <button type="submit">{idParam ? "Edit" : "Create"} Task</button>
+          </label>
+        )}
       </form>
     </div>
   );

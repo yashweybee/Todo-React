@@ -5,15 +5,23 @@ body {
 
 .todo-list {
   padding: 20px;
+  height: 100vh;
+  background-color: #efefef;
 }
-
-.todoContainer {
+.todo-list .todoData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todo-list .todoContainer {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
   width: 20em;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);
   /* Hide the browser's default checkbox */
   /* Create a custom checkbox */
   /* On mouse-over, add a grey background color */
@@ -21,7 +29,7 @@ body {
   /* Create the checkmark/indicator (hidden when not checked) */
   /* Show the checkmark when checked */
 }
-.todoContainer .check-container {
+.todo-list .todoContainer .check-container {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -32,14 +40,14 @@ body {
   -moz-user-select: none;
   user-select: none;
 }
-.todoContainer .check-container input {
+.todo-list .todoContainer .check-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-.todoContainer .checkmark {
+.todo-list .todoContainer .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -47,21 +55,21 @@ body {
   width: 25px;
   border-radius: 50%;
 }
-.todoContainer .check-container:hover input ~ .checkmark {
+.todo-list .todoContainer .check-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
-.todoContainer .check-container input:checked ~ .checkmark {
+.todo-list .todoContainer .check-container input:checked ~ .checkmark {
   background-color: #3787eb;
 }
-.todoContainer .checkmark:after {
+.todo-list .todoContainer .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-.todoContainer .check-container input:checked ~ .checkmark:after {
+.todo-list .todoContainer .check-container input:checked ~ .checkmark:after {
   display: block;
 }
-.todoContainer .check-container .checkmark:after {
+.todo-list .todoContainer .check-container .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -70,7 +78,7 @@ body {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-.todoContainer a {
+.todo-list .todoContainer a {
   text-decoration: none;
   color: inherit;
 }/*# sourceMappingURL=todoList.css.map */

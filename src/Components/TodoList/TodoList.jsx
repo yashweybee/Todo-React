@@ -58,7 +58,7 @@ const TodoList = () => {
       editTodoState({ id: e.target.value, taskCompleted: taskCompleted })
     );
   };
-  console.log(todoData);
+  // console.log(todoData);
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -71,7 +71,6 @@ const TodoList = () => {
   return (
     <>
       <Header />
-
       <div className="todo-list">
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="todoData">
@@ -84,8 +83,8 @@ const TodoList = () => {
                 {todoData.map((todo, index) => {
                   return (
                     <Draggable
-                      key={todo.id}
-                      draggableId={todo.id}
+                      key={todo.taskId}
+                      draggableId={todo.taskId}
                       index={index}
                     >
                       {(provided) => (
@@ -101,7 +100,7 @@ const TodoList = () => {
                               className="inp-checkbox"
                               type="checkbox"
                               onChange={handleCheckBox}
-                              value={todo.id}
+                              value={todo.taskId}
                               checked={todo.isCompleted}
                             />
                             <span className="checkmark"></span>
@@ -109,7 +108,7 @@ const TodoList = () => {
 
                           <Link
                             className="todo-item"
-                            to={"/todo/display/" + todo.id}
+                            to={"/todo/display/" + todo.taskId}
                           >
                             <Todo
                               name={todo.name}

@@ -1,6 +1,5 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 10px 10px;
   padding: 0;
 }
 
@@ -28,6 +27,33 @@ body {
 .todo-form form label {
   display: block;
   margin-bottom: 10px;
+}
+.todo-form form label img {
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  position: relative;
+  left: 30%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.todo-form form label svg {
+  background-color: #3498db;
+  position: absolute;
+  left: 53%;
+  top: 24%;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+}
+.todo-form form label .inp-Img {
+  position: absolute;
+  /* top: 10px; */
+  left: 33%;
+  width: 30%;
+  height: 15%;
+  opacity: 0;
+  cursor: pointer;
 }
 .todo-form form label p {
   margin: 15px auto;
@@ -67,5 +93,26 @@ body {
   transition: background-color 0.3s ease;
 }
 .todo-form form label button:hover {
+  background-color: #ecf4fd;
+}
+.todo-form form .display-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.todo-form form .display-btns a {
+  text-decoration: none;
+  text-align: center;
+  width: 30%;
+  background-color: #3787eb;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.todo-form form .display-btns a:hover {
   background-color: #ecf4fd;
 }/*# sourceMappingURL=addTodo.css.map */

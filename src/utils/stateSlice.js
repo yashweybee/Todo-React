@@ -14,7 +14,7 @@ const stateSlice = createSlice(
                 state.searchText = ""
             },
             setCurrnetPage: (state, action) => {
-                console.log(action.payload);
+                // console.log(action.payload);
                 state.currentPage = action.payload
             },
             setSearchText: (state, action) => {

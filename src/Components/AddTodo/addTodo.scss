@@ -34,6 +34,46 @@
       display: block;
       margin-bottom: 10px;
 
+      img {
+        width: 8em;
+        height: 8em;
+        border-radius: 50%;
+        // border: 5px solid $black;
+        position: relative;
+        left: 30%;
+        object-fit: cover;
+
+        // width: 30%;
+        // height: 30%;
+      }
+
+      svg {
+        // fill: #fff;
+        background-color: #3498db;
+        position: absolute;
+        left: 53%;
+        top: 24%;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+      }
+
+      .inp-Img {
+        position: absolute;
+        /* top: 10px; */
+        left: 33%;
+        width: 30%;
+        height: 15%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      input[type="file"] {
+        // background-color: black;
+        // position: absolute;
+        // width: 10px;
+      }
+
       p {
         margin: 15px auto;
         font-weight: bold;
@@ -90,6 +130,35 @@
         &:hover {
           background-color: $secondary-color;
         }
+      }
+    }
+    .display-btns {
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        text-align: center;
+
+        width: 30%;
+        background-color: $primary-color;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $secondary-color;
+        }
+      }
+      .back {
+        // background-color: $secondary-color;
+        // color: $black;
+        // border: 1px solid $focus-color;
       }
     }
   }
