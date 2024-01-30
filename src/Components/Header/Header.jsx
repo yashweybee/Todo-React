@@ -47,7 +47,9 @@ const Header = () => {
   return (
     <div className="main-header">
       <div className="heading">
-        <h1>TO-DO</h1>
+        <Link to="/">
+          <h1>TO-DO</h1>
+        </Link>
         <div className="left-icon icons">
           <SettingSvg />
         </div>

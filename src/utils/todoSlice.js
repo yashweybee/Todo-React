@@ -35,7 +35,8 @@ const todoSlice = createSlice(
 
             },
             deleteTodo: (state, action) => {
-                return { ...state, todo: state.todo.filter((todo) => todo.id !== action.payload) };
+                // console.log(action.payload);
+                return { ...state, todo: state.todo.filter((todo) => todo.taskId !== action.payload) };
             },
             clearTodo: (state) => {
                 state.todo.length = 0;

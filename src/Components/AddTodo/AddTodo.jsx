@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { addTodo } from "../../utils/todoSlice";
+import { addTodo, deleteTodo } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
 import { CameraSvg } from "../../utils/svgs";
@@ -111,6 +111,16 @@ const AddTodo = () => {
     navigate("/todo");
   };
 
+  const handleDeleteTodo = () => {
+    const confirmBox = window.confirm(
+      "Do you really want to delete this Crumb?"
+    );
+    if (confirmBox === true) {
+      console.log("Yes");
+      // dispatch(deleteTodo(idParam));
+    }
+  };
+
   return (
     <div className="todo-form">
       <div className="heading">
@@ -199,12 +209,14 @@ const AddTodo = () => {
 
         {currentPage === "display" ? (
           <div className="display-btns">
-            <Link className="btn-link back" to="/todo">
-              Back
-            </Link>
-            <Link className="btn-link" to={"/todo/edit/" + idParam}>
-              Edit Task
-            </Link>
+            <button
+              onClick={handleDeleteTodo}
+              className="btn-link back"
+              to="/todo"
+            >
+              Delete
+            </button>
+            <button className="btn-link">Edit Task</button>
           </div>
         ) : (
           <label>
