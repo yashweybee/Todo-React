@@ -12,19 +12,19 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="left-foot secondary-foot">
+      {/* <div className="left-foot secondary-foot">
         <HomeSvg />
         <CalenderSvg />
-      </div>
+      </div> */}
       <Link to="/todo/add">
         <div className="plus-container">
           <PlusSvg />
         </div>
       </Link>
-      <div className="right-foot secondary-foot">
+      {/* <div className="right-foot secondary-foot">
         <ChatSvg />
         <AccountNewSvg />
-      </div>
+      </div> */}
     </div>
   );
 };

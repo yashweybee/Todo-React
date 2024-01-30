@@ -1,19 +1,20 @@
-.footer {
+body {
+  background-color: #f5f5f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+
+.footer a .plus-container {
+  background-color: #3787eb;
+  padding: 1em;
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  text-align: center;
-}
-.footer .secondary-foot {
   display: inline-block;
-}
-.footer .secondary-foot svg {
-  margin: 10px 23px;
-}
-.footer .plus-container {
-  position: relative;
-  display: inline-block;
+  left: 21em;
   bottom: 2em;
+  border-radius: 50%;
+  box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.75);
+}
+.footer a .plus-container svg {
+  position: relative;
+  top: 0.1em;
 }/*# sourceMappingURL=footer.css.map */
