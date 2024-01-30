@@ -39,9 +39,10 @@ const Header = () => {
       </div>
       <SearchTodo />
       <div className="btn-container">
-        <Link className="btn" to="/todo/add">
+        {/* <Link className="btn" to="/todo/add">
           Add
-        </Link>
+        </Link> */}
+        <button className="btn">Sort</button>
         <button className="btn" onClick={handelAllBtn}>
           All
         </button>
