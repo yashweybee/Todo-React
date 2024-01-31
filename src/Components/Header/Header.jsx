@@ -47,7 +47,9 @@ const Header = () => {
           <SettingSvg />
         </div>
       </div>
-      <SearchTodo />
+      <div className="search-div">
+        <SearchTodo />
+      </div>
       <div className="btn-container">
         <select
           name="sort by"

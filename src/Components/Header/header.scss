@@ -66,8 +66,8 @@
 // Media query for larger screens (optional)
 @media (min-width: 768px) {
   .main-header {
-    .btn-container {
-      margin-top: 0;
+    .search-div {
+      background-color: black;
     }
   }
 }

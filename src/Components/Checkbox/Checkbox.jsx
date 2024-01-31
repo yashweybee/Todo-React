@@ -17,7 +17,6 @@ const Checkbox = ({ defaultChecked, onClick }) => {
           points="11.78 18.12 15.55 22.23 25.17 12.87"
         ></polyline>
       </svg>
-      {/* <input type="checkbox" onClick={onClick} defaultChecked={defaultChecked} /> */}
     </div>
   );
 };

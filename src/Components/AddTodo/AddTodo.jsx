@@ -104,7 +104,6 @@ const AddTodo = () => {
     e.preventDefault();
     const message = checkValidation(name);
     setErrorMessage(message);
-    console.log(message);
     if (message) return;
 
     const todoData = {

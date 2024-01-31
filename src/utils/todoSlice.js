@@ -21,8 +21,8 @@ const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            // todo: mockData
-            todo: [],
+            todo: mockData,
+            // todo: [],
             notification: []
         },
         reducers: {

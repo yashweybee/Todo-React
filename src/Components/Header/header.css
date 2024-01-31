@@ -61,7 +61,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .main-header .btn-container {
-    margin-top: 0;
+  .main-header .search-div {
+    background-color: black;
   }
 }/*# sourceMappingURL=header.css.map */
