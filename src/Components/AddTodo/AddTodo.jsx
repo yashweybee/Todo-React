@@ -83,7 +83,7 @@ const AddTodo = () => {
     setErrorMessage("");
     const file = e.target.files[0];
     // const imagePath = `/images/${file.name}`;
-    console.log(URL.createObjectURL(file));
+    // console.log(URL.createObjectURL(file));
     setImgFile(URL.createObjectURL(file));
   };
 
@@ -96,7 +96,7 @@ const AddTodo = () => {
     setTaskDate(e.target.value);
   };
   const handleNotificationTime = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setNotificationTime(e.target.value);
   };
 

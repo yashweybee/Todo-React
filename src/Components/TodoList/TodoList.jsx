@@ -88,7 +88,7 @@ const TodoList = () => {
     // console.log(e.target.value);
     dispatch(onChangeCheckBox(todo));
   };
-  console.log(todoData);
+  // console.log(todoData);
   return (
     <>
       <Header />
