@@ -2,13 +2,8 @@
 
 .body-container {
   height: 100vh;
-  //   background-color: black;
   text-align: center;
-
   background: linear-gradient(to bottom, $primary-color, $white 80%);
-
-  //   justify-content: space-between;
-  //   align-items: center;
 
   .hero-container {
     // height: max-content;
@@ -17,13 +12,13 @@
     }
   }
   .btn {
-    background-color: $primary-color;
-    color: white;
-    padding: 10px;
-    border-radius: 15px;
     margin-top: 13em;
-
     a {
+      display: inline;
+      background-color: $primary-color;
+      color: white;
+      padding: 3% 13%;
+      border-radius: 15px;
       color: $white;
       text-decoration: none;
     }

@@ -8,15 +8,18 @@ import {
 } from "../../utils/svgs";
 import "./footer.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrnetPage } from "../../utils/stateSlice";
 
 const Footer = () => {
+  const dispatch = useDispatch();
   return (
     <div className="footer">
       {/* <div className="left-foot secondary-foot">
         <HomeSvg />
         <CalenderSvg />
       </div> */}
-      <Link to="/todo/add">
+      <Link onClick={() => dispatch(setCurrnetPage("add"))} to="/todo/add">
         <div className="plus-container">
           <PlusSvg />
         </div>

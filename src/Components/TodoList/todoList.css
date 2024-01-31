@@ -1,11 +1,11 @@
 body {
   background-color: #f5f5f5;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0;
+  margin: 0;
 }
 
 .todo-list {
-  padding: 20px;
+  padding: 10px 30px;
 }
 .todo-list .todoData {
   display: flex;
@@ -19,7 +19,7 @@ body {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
-  width: 20em;
+  width: 100%;
   background-color: #ffffff;
   box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);
 }

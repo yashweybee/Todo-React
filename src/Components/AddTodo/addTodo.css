@@ -1,14 +1,59 @@
 body {
+  background-color: #f5f5f5;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0;
+  margin: 0;
 }
 
 .todo-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 10px 20px;
+  position: relative;
+}
+.todo-form .model-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  text-align: center;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+.todo-form .model-confirm .model-body {
+  position: absolute;
+  top: 40%;
+  left: 20%;
+}
+.todo-form .model-confirm .model-body .confirm-btns {
+  display: flex;
+  gap: 1em;
+}
+.todo-form .model-confirm .model-body .confirm-btns button {
+  width: 100%;
+  background-color: #3787eb;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.todo-form .model-confirm .model-body .confirm-btns button:hover {
+  background-color: #1464c7;
+}
+.todo-form .errorMessage {
+  color: red;
+  margin: 0;
 }
 .todo-form .heading {
+  display: flex;
+  align-items: center;
+  gap: 25%;
   margin-bottom: 20px;
 }
 .todo-form .heading a {
@@ -18,7 +63,7 @@ body {
   transition: color 0.3s ease;
 }
 .todo-form .heading a:hover {
-  color: #1f618d;
+  color: #1464c7;
 }
 .todo-form .heading h1 {
   text-align: center;
@@ -41,18 +86,19 @@ body {
   background-color: #3498db;
   position: absolute;
   left: 53%;
-  top: 24%;
+  top: 20%;
   cursor: pointer;
   padding: 5px;
   border-radius: 50%;
 }
 .todo-form form label .inp-Img {
   position: absolute;
-  /* top: 10px; */
+  top: 10px;
   left: 33%;
   width: 30%;
   height: 15%;
   opacity: 0;
+  display: none;
   cursor: pointer;
 }
 .todo-form form label p {
@@ -93,26 +139,12 @@ body {
   transition: background-color 0.3s ease;
 }
 .todo-form form label button:hover {
-  background-color: #ecf4fd;
+  background-color: #1464c7;
 }
 .todo-form form .display-btns {
   display: flex;
-  justify-content: space-between;
+  gap: 1em;
 }
-.todo-form form .display-btns a {
-  text-decoration: none;
-  text-align: center;
-  width: 30%;
-  background-color: #3787eb;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.todo-form form .display-btns a:hover {
-  background-color: #ecf4fd;
+.todo-form form .display-btns .delete {
+  background-color: red;
 }/*# sourceMappingURL=addTodo.css.map */

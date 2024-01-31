@@ -5,6 +5,8 @@ import { addTodo, deleteTodo } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
 import { CameraSvg } from "../../utils/svgs";
+import { DEFAULT_IMG_PATH } from "../../utils/constants";
+import checkValidation from "../../utils/validation";
 const AddTodo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,6 +19,8 @@ const AddTodo = () => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [priority, setPriority] = useState("High");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showModel, setShowModel] = useState(false);
 
   const getFormatedDate = () => {
     const date = new Date();
@@ -42,7 +46,7 @@ const AddTodo = () => {
     return `${hours}:${minutes}`;
   };
   const [notificationTime, setNotificationTime] = useState(getFormatedTime());
-  const [imgFile, setImgFile] = useState();
+  const [imgFile, setImgFile] = useState(DEFAULT_IMG_PATH);
 
   useEffect(() => {
     getCurrentTodo();
@@ -74,6 +78,7 @@ const AddTodo = () => {
   // console.log(currentPage, idParam);
 
   const handleImageInp = (e) => {
+    setErrorMessage("");
     const file = e.target.files[0];
     // const imagePath = `/images/${file.name}`;
     console.log(URL.createObjectURL(file));
@@ -95,6 +100,10 @@ const AddTodo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const message = checkValidation(name);
+    setErrorMessage(message);
+    console.log(message);
+    if (message) return;
 
     const todoData = {
       taskId: taskId,
@@ -106,54 +115,87 @@ const AddTodo = () => {
       isCompleted: false,
       priority: priority,
     };
-    // console.log(todoData);
-    dispatch(addTodo(todoData));
-    navigate("/todo");
+    console.log(todoData);
+    // dispatch(addTodo(todoData));
+    // navigate("/todo");
   };
 
-  const handleDeleteTodo = () => {
-    const confirmBox = window.confirm(
-      "Do you really want to delete this Crumb?"
-    );
-    if (confirmBox === true) {
-      console.log("Yes");
-      // dispatch(deleteTodo(idParam));
-    }
+  const handleDeleteTodo = (e) => {
+    e.preventDefault();
+    setShowModel(true);
+  };
+
+  const handleEditBtn = (e) => {
+    e.preventDefault();
+    console.log("edit");
+    navigate(`/todo/edit/${idParam}`);
+  };
+
+  const handleCancelBtn = () => {
+    setShowModel(false);
+  };
+  const handleYesBtn = () => {
+    dispatch(deleteTodo(idParam));
+    navigate("/todo");
   };
 
   return (
     <div className="todo-form">
+      {showModel && (
+        <div className="model-confirm">
+          <div className="model-body">
+            <div className="title">
+              <h2>Are you sure to delete?</h2>
+            </div>
+            <div className="confirm-btns">
+              <button type="button" onClick={handleCancelBtn}>
+                Cancel
+              </button>
+              <button type="button" onClick={handleYesBtn}>
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="heading">
         <Link to="/todo">Back</Link>
         <h1>{idParam ? "Edit" : "Create"} Task</h1>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label>
-          {/* <p>Avatar</p> */}
           <img src={imgFile || "../gym-pic.jpg"} alt="image" />
-          <CameraSvg />
+          <div
+            style={{ display: currentPage === "display" ? "none" : "block" }}
+          >
+            <CameraSvg />
+          </div>
           <input
-            required
             type="file"
             name="myImage"
             accept="image/png, image/gif, image/jpeg"
             className="inp-Img"
             onChange={handleImageInp}
+            disabled={currentPage === "display"}
           />
         </label>
 
-        <label>
+        <label name="inp-name">
           <p>Task Name</p>
+          {/* <span>{errorMessage}</span> */}
           <input
             required
             type="text"
             placeholder="Go to gym"
-            // name=""
-            id=""
+            id="inp-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={currentPage === "display"}
+            style={{
+              border: errorMessage ? "1px solid red" : "1px solid #ccc",
+            }}
           />
         </label>
 
@@ -164,6 +206,7 @@ const AddTodo = () => {
             id="priority"
             onChange={handleSelectPriority}
             value={priority}
+            disabled={currentPage === "display"}
           >
             <option value="High">High</option>
             <option value="Medium">Medium</option>
@@ -179,24 +222,25 @@ const AddTodo = () => {
             name="trip-start"
             value={taskDate}
             onChange={handleDateChange}
+            disabled={currentPage === "display"}
           />
         </label>
+
         <label>
           <p>Notify me at</p>
           <input
             type="time"
             id="notify"
             name="notification time"
-            required
             onChange={handleNotificationTime}
             value={notificationTime}
+            disabled={currentPage === "display"}
           />
         </label>
 
         <label>
           <p>Description</p>
           <textarea
-            required
             type="text"
             placeholder="Today workout Plan..."
             name=""
@@ -204,23 +248,32 @@ const AddTodo = () => {
             id="description"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
+            disabled={currentPage === "display"}
           />
         </label>
 
         {currentPage === "display" ? (
-          <div className="display-btns">
+          <label className="display-btns">
             <button
               onClick={handleDeleteTodo}
-              className="btn-link back"
+              className="btn-link delete"
               to="/todo"
             >
               Delete
             </button>
-            <button className="btn-link">Edit Task</button>
-          </div>
+            <button onClick={handleEditBtn} className="btn-link">
+              Edit Task
+            </button>
+          </label>
         ) : (
           <label>
-            <button type="submit">{idParam ? "Edit" : "Create"} Task</button>
+            <button onClick={handleSubmit} type="submit">
+              {idParam ? "Edit" : "Create"} Task
+            </button>
+
+            {/* <button onClick={handleSubmit} type="submit">
+              Create Task
+            </button> */}
           </label>
         )}
       </form>

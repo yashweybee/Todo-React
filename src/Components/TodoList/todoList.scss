@@ -1,7 +1,7 @@
 @import "../../index.scss";
 
 .todo-list {
-  padding: 20px;
+  padding: 10px 30px;
   // height: 100vh;
   // background-color: $gray;
 
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 15px;
-    width: 20em;
+    width: 100%;
     background-color: $white;
     -webkit-box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);

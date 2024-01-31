@@ -4,12 +4,60 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 10px 20px;
+  position: relative;
   // background-color: $primary-color;
 
+  .model-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+    text-align: center;
+    // padding: 1em 2em;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: $white;
+
+    .model-body {
+      position: absolute;
+      top: 40%;
+      left: 20%;
+
+      .confirm-btns {
+        display: flex;
+
+        gap: 1em;
+        button {
+          width: 100%;
+          background-color: $primary-color;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 15px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: $focus-color;
+          }
+        }
+      }
+    }
+  }
+
+  .errorMessage {
+    color: red;
+    margin: 0;
+  }
+
   .heading {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
+    display: flex;
+    align-items: center;
+    gap: 25%;
     margin-bottom: 20px;
 
     a {
@@ -19,7 +67,7 @@
       transition: color 0.3s ease;
 
       &:hover {
-        color: #1f618d;
+        color: $focus-color;
       }
     }
 
@@ -52,7 +100,7 @@
         background-color: #3498db;
         position: absolute;
         left: 53%;
-        top: 24%;
+        top: 20%;
         cursor: pointer;
         padding: 5px;
         border-radius: 50%;
@@ -60,18 +108,13 @@
 
       .inp-Img {
         position: absolute;
-        /* top: 10px; */
+        top: 10px;
         left: 33%;
         width: 30%;
         height: 15%;
         opacity: 0;
+        display: none;
         cursor: pointer;
-      }
-
-      input[type="file"] {
-        // background-color: black;
-        // position: absolute;
-        // width: 10px;
       }
 
       p {
@@ -94,14 +137,6 @@
           outline: none;
           border-color: #3498db;
         }
-      }
-
-      #description {
-        // background-color: black;
-      }
-
-      input[type="file"] {
-        //   display: none; // Hide the file input
       }
 
       .inp-Img {
@@ -128,37 +163,16 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: $secondary-color;
+          background-color: $focus-color;
         }
       }
     }
     .display-btns {
       display: flex;
-      justify-content: space-between;
+      gap: 1em;
 
-      a {
-        text-decoration: none;
-        text-align: center;
-
-        width: 30%;
-        background-color: $primary-color;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-          background-color: $secondary-color;
-        }
-      }
-      .back {
-        // background-color: $secondary-color;
-        // color: $black;
-        // border: 1px solid $focus-color;
+      .delete {
+        background-color: red;
       }
     }
   }

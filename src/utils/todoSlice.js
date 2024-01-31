@@ -10,7 +10,7 @@ const todoSlice = createSlice(
         },
         reducers: {
             addTodo: (state, action) => {
-                console.log(action.payload);
+                // console.log(action.payload);
 
                 const index = state.todo.findIndex(todo => todo.taskId === action.payload.taskId);
                 console.log(index);
