@@ -4,6 +4,12 @@ body {
   margin: 0;
 }
 
+@media (min-width: 1024px) {
+  body {
+    width: 80%;
+    margin: auto;
+  }
+}
 .main-header {
   padding: 10px 20px;
   display: flex;
@@ -37,6 +43,21 @@ body {
   display: flex;
   margin-top: 10px;
   text-align: center;
+  justify-content: space-between;
+}
+.main-header .btn-container .all-btns .btn {
+  background-color: #3787eb;
+  color: #ffffff;
+  padding: 10px 21px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+.main-header .btn-container .all-btns .btn:hover {
+  background-color: #1464c7;
 }
 .main-header .btn-container .btn,
 .main-header .btn-container a.btn {
@@ -60,8 +81,20 @@ body {
   background-color: #1464c7;
 }
 
-@media (min-width: 768px) {
-  .main-header .search-div {
-    background-color: black;
+@media (min-width: 1024px) {
+  .main {
+    margin: auto;
+  }
+  .main .search-div {
+    position: absolute;
+    left: 22.5%;
+    top: 5%;
+    width: 34%;
+  }
+}
+@media (min-width: 1440px) {
+  .main .search-div {
+    top: 4.5%;
+    left: 19%;
   }
 }/*# sourceMappingURL=header.css.map */

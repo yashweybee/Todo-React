@@ -25,6 +25,10 @@
     -moz-box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 3px 12px -7px rgba(0, 0, 0, 0.75);
 
+    .todo-item {
+      width: 100%;
+    }
+
     &:hover {
       // box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
     }

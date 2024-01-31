@@ -51,29 +51,33 @@ const Header = () => {
         <SearchTodo />
       </div>
       <div className="btn-container">
-        <select
-          name="sort by"
-          className="btn drop-down"
-          onChange={handleSortSelect}
-          onClick={toogleSortSelect}
-        >
-          <option value="" defaultChecked>
-            {!isOpen ? "Sort" : "None"}
-          </option>
-          <option value="Created/Modified">Created</option>
-          <option value="Name">Name</option>
-          <option value="Date">Date</option>
-        </select>
+        <div className="select-sortby">
+          <select
+            name="sort by"
+            className="btn drop-down"
+            onChange={handleSortSelect}
+            onClick={toogleSortSelect}
+          >
+            <option value="" defaultChecked>
+              {!isOpen ? "Sort" : "None"}
+            </option>
+            <option value="Created/Modified">Created</option>
+            <option value="Name">Name</option>
+            <option value="Date">Date</option>
+          </select>
+        </div>
 
-        <button className="btn" onClick={handelAllBtn}>
-          All
-        </button>
-        <button className="btn" onClick={handelActiveBtn}>
-          Active
-        </button>
-        <button className="btn" onClick={handelCompleted}>
-          Completed
-        </button>
+        <div className="all-btns">
+          <button className="btn" onClick={handelAllBtn}>
+            All
+          </button>
+          <button className="btn" onClick={handelActiveBtn}>
+            Active
+          </button>
+          <button className="btn" onClick={handelCompleted}>
+            Completed
+          </button>
+        </div>
       </div>
     </div>
   );

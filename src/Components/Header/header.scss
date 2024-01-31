@@ -37,7 +37,28 @@
     display: flex;
     margin-top: 10px;
     text-align: center;
+    justify-content: space-between;
 
+    .all-btns {
+      // display: flex;
+
+      .btn {
+        background-color: $primary-color;
+        color: $white;
+        // color: $text-color;
+        padding: 10px 21px;
+        margin-right: 8px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $focus-color;
+        }
+      }
+    }
     .btn,
     a.btn {
       flex: 1;
@@ -64,10 +85,32 @@
 }
 
 // Media query for larger screens (optional)
-@media (min-width: 768px) {
-  .main-header {
+// @media (min-width: 768px) {
+//   .main-header {
+//     .search-div {
+//       background-color: black;
+//     }
+//   }
+// }
+
+@media (min-width: 1024px) {
+  .main {
+    // width: 80%;
+    margin: auto;
     .search-div {
-      background-color: black;
+      position: absolute;
+      left: 22.5%;
+      top: 5%;
+      width: 34%;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .main {
+    .search-div {
+      top: 4.5%;
+      left: 19%;
     }
   }
 }

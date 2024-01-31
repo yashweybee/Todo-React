@@ -91,7 +91,7 @@ const TodoList = () => {
   };
   // console.log(todoData);
   return (
-    <>
+    <div className="main">
       <Header />
       <div className="todo-list">
         {todoData.length === 0 && <div>No data available</div>}
@@ -145,7 +145,7 @@ const TodoList = () => {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 
