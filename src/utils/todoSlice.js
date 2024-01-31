@@ -5,8 +5,8 @@ const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            todo: mockData
-            // todo: []
+            // todo: mockData
+            todo: []
         },
         reducers: {
             addTodo: (state, action) => {
@@ -25,7 +25,7 @@ const todoSlice = createSlice(
                     });
                     return {
                         ...state,
-                        todo: [...state.todo, copyArray]
+                        todo: copyArray
                     }
                 }
             },

@@ -15,7 +15,8 @@ const AddTodo = () => {
   const currentPage = useSelector((store) => store?.state?.currentPage);
   const allTodos = useSelector((store) => store?.todo?.todo);
   const [currentTodo, setCurrentTodo] = useState();
-  const taskId = useId();
+  const newTaskId = useId();
+  const [taskId, setTaskId] = useState(newTaskId);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [priority, setPriority] = useState("High");
@@ -67,6 +68,7 @@ const AddTodo = () => {
       if (todoToEdit) {
         setCurrentTodo(todoToEdit);
         setImgFile(todoToEdit.imgFile);
+        setTaskId(todoToEdit.taskId);
         setName(todoToEdit.name);
         setDesc(todoToEdit.description);
         setTaskDate(todoToEdit.deadline);
@@ -115,9 +117,9 @@ const AddTodo = () => {
       isCompleted: false,
       priority: priority,
     };
-    console.log(todoData);
-    // dispatch(addTodo(todoData));
-    // navigate("/todo");
+    // console.log(todoData);
+    dispatch(addTodo(todoData));
+    navigate("/todo");
   };
 
   const handleDeleteTodo = (e) => {
@@ -160,8 +162,18 @@ const AddTodo = () => {
       )}
 
       <div className="heading">
-        <Link to="/todo">Back</Link>
-        <h1>{idParam ? "Edit" : "Create"} Task</h1>
+        <Link
+          to={currentPage === "edit" ? `/todo/display/${idParam}` : "/todo"}
+        >
+          Back
+        </Link>
+        <h1>
+          {currentPage === "display"
+            ? "Details"
+            : idParam
+            ? "Edit Task"
+            : "New Task"}
+        </h1>
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>

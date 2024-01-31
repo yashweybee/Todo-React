@@ -93,6 +93,7 @@ const TodoList = () => {
     <>
       <Header />
       <div className="todo-list">
+        {todoData.length === 0 && <div>No data available</div>}
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="todoData">
             {(provided) => (
