@@ -11,20 +11,30 @@ body {
   }
 }
 .progress-summary {
-  padding: 1em;
-  background-color: #3787eb;
+  margin-top: 1em;
+  padding: 1em 2em;
+  color: white;
+  background: linear-gradient(#3787eb, #4cc0ee);
   border-radius: 15px;
 }
 .progress-summary .content h1 {
-  font-size: 1.5em;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.progress-summary .tasks {
+  display: flex;
+  justify-content: space-between;
 }
 .progress-summary .progress {
   border-radius: 15px;
+  margin-top: 1em;
+  background-color: #4cc0ee;
 }
 .progress-summary .progress .progress-bar {
-  height: 1.5em;
+  height: 1em;
   border: none;
   border-radius: 15px;
   background-color: #ffffff;
   color: #3787eb;
+  transition: 1s;
 }/*# sourceMappingURL=progress.css.map */

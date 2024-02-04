@@ -5,24 +5,27 @@ import { useDispatch } from "react-redux";
 import { setProgress } from "../../utils/todoSlice";
 
 const Progress = () => {
-  const progressBarValue = useSelector((store) => store.todo.progress);
+  const progress = useSelector((store) => store.todo.progress);
+  const progressBarValue = Math.floor(progress);
+  console.log(progressBarValue);
+  const todos = useSelector((store) => store.todo.todo).length;
   const dispatch = useDispatch();
   // const [progress, setProgress] = useState(1);
-  console.log(progressBarValue);
   useEffect(() => {
     dispatch(setProgress());
   }, []);
+  if (!progressBarValue) return;
 
   return (
     <div className="progress-summary">
       <div className="content">
         <h1>Today's progress summary</h1>
       </div>
-      <div className="tasks">10 Tasks</div>
+      <div className="tasks">
+        <span>{todos} Tasks</span>
+        <span>{progressBarValue}%</span>
+      </div>
       <div className="progress">
-        {/* <progress id="file" value="50" max="100">
-          32%
-        </progress> */}
         <div className="progress-bar" style={{ width: `${progressBarValue}%` }}>
           {" "}
         </div>

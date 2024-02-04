@@ -15,7 +15,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const currentPage = useSelector((store) => store?.state?.currentPage);
+  const currentState = useSelector((store) => store?.state?.currentState);
   const handelAllBtn = () => {
     dispatch(setCurrnetState("all"));
     // dispatch(setSearchText(""));
@@ -69,13 +69,33 @@ const Header = () => {
         </div>
 
         <div className="all-btns">
-          <button className="btn" onClick={handelAllBtn}>
+          <button
+            className="btn"
+            onClick={handelAllBtn}
+            style={{
+              backgroundColor: currentState === "all" ? "#4cc0ee" : "#1464c7",
+            }}
+          >
             All
           </button>
-          <button className="btn" onClick={handelActiveBtn}>
+          <button
+            className="btn"
+            onClick={handelActiveBtn}
+            style={{
+              backgroundColor:
+                currentState === "active" ? "#4cc0ee" : "#1464c7",
+            }}
+          >
             Active
           </button>
-          <button className="btn" onClick={handelCompleted}>
+          <button
+            className="btn"
+            onClick={handelCompleted}
+            style={{
+              backgroundColor:
+                currentState === "completed" ? "#4cc0ee" : "#1464c7",
+            }}
+          >
             Completed
           </button>
         </div>

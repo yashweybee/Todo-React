@@ -23,8 +23,8 @@ const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            todo: mockData,
-            // todo: [],
+            // todo: mockData,
+            todo: [],
             progress: 0
         },
         reducers: {
@@ -58,7 +58,7 @@ const todoSlice = createSlice(
                 const totalTodos = state.todo.length;
                 const completedTodos = state.todo.filter((todo) => todo.isCompleted === true);
                 const progressFinal = (100 * completedTodos.length) / totalTodos;
-                console.log(progressFinal);
+
                 state.progress = progressFinal
             }
         }

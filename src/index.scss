@@ -1,6 +1,7 @@
 $primary-color: #3787eb;
 $focus-color: #1464c7;
-$secondary-color: #ecf4fd;
+// $secondary-color: #ecf4fd;
+$secondary-color: #4cc0ee;
 $white: #ffffff;
 $black: #000;
 $darker: #3d4266;
@@ -17,7 +18,8 @@ body {
 
 @media (min-width: 1024px) {
   body {
-    width: 80%;
+    // width: 80%;
+    max-width: 80%;
     margin: auto;
   }
 }
