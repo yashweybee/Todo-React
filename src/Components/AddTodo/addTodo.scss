@@ -177,3 +177,22 @@
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .todo-form {
+    // margin-top: 10%;
+    .heading {
+      gap: 35%;
+    }
+    form {
+      label {
+        img {
+          left: 40%;
+        }
+        svg {
+          left: 55%;
+        }
+      }
+    }
+  }
+}

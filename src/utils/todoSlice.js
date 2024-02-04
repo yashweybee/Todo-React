@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import mockData from "./mockData";
 
 const setNotification = (todoData) => {
-    // console.log(todoData.notificationTime);
+    console.log(todoData);
     const [hours, minutes] = todoData.notificationTime.split(':');
     const timeDiff = new Date(todoData.deadline).setHours(hours, minutes, 0, 0) - new Date().getTime();
 
@@ -21,20 +21,17 @@ const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            todo: mockData,
-            // todo: [],
+            // todo: mockData,
+            todo: [],
             notification: []
         },
         reducers: {
             addTodo: (state, action) => {
                 const index = state.todo.findIndex(todo => todo.taskId === action.payload.taskId);
                 // console.log(index);
+                setNotification(action.payload);
                 if (index === -1) {
                     state.todo.push(action.payload);
-                    // const notificationTime = ;
-                    setNotification(action.payload);
-
-
 
                 } else {
                     const copyArray = [...state.todo];
@@ -48,6 +45,7 @@ const todoSlice = createSlice(
                         todo: copyArray
                     }
                 }
+                // console.log(action.payload);
             },
             onChangeCheckBox: (state, action) => {
                 const { taskId } = action.payload

@@ -4,6 +4,12 @@ body {
   margin: 0;
 }
 
+@media (min-width: 1024px) {
+  body {
+    width: 80%;
+    margin: auto;
+  }
+}
 .todo-form {
   max-width: 600px;
   margin: 0 auto;
@@ -147,4 +153,16 @@ body {
 }
 .todo-form form .display-btns .delete {
   background-color: red;
+}
+
+@media (min-width: 1024px) {
+  .todo-form .heading {
+    gap: 35%;
+  }
+  .todo-form form label img {
+    left: 40%;
+  }
+  .todo-form form label svg {
+    left: 55%;
+  }
 }/*# sourceMappingURL=addTodo.css.map */

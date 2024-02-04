@@ -6,7 +6,8 @@ body {
 
 @media (min-width: 1024px) {
   body {
-    margin: 20px;
+    width: 80%;
+    margin: auto;
   }
 }
 .todo-list {

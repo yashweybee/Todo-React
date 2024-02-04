@@ -82,6 +82,11 @@
       }
     }
   }
+
+  // .select-sortby {
+  //   select {
+  //   }
+  // }
 }
 
 // Media query for larger screens (optional)
@@ -101,7 +106,7 @@
       position: absolute;
       left: 22.5%;
       top: 5%;
-      width: 34%;
+      width: 25%;
     }
   }
 }
@@ -111,6 +116,8 @@
     .search-div {
       top: 4.5%;
       left: 19%;
+
+      // width: 34%;
     }
   }
 }

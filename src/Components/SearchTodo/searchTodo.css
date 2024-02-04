@@ -4,6 +4,12 @@ body {
   margin: 0;
 }
 
+@media (min-width: 1024px) {
+  body {
+    width: 80%;
+    margin: auto;
+  }
+}
 .search-container {
   text-align: center;
   padding: 10px 0;
