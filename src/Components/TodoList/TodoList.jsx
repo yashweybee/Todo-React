@@ -4,7 +4,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { onChangeCheckBox } from "../../utils/todoSlice";
+import { onChangeCheckBox, setProgress } from "../../utils/todoSlice";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import "./todoList.css";
 import Checkbox from "../Checkbox/Checkbox";
@@ -88,6 +88,7 @@ const TodoList = () => {
   const handleCheckbox = (todo) => {
     // console.log(e.target.value);
     dispatch(onChangeCheckBox(todo));
+    dispatch(setProgress());
   };
   // console.log(todoData);
   return (

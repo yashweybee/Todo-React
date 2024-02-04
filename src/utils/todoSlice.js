@@ -17,13 +17,15 @@ const setNotification = (todoData) => {
     }, timeDiff);
 }
 
+
+
 const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            // todo: mockData,
-            todo: [],
-            notification: []
+            todo: mockData,
+            // todo: [],
+            progress: 0
         },
         reducers: {
             addTodo: (state, action) => {
@@ -36,16 +38,11 @@ const todoSlice = createSlice(
                 } else {
                     const copyArray = [...state.todo];
                     copyArray[index] = action.payload
-                    // console.log({
-                    //     ...state,
-                    //     todo: copyArray
-                    // });
                     return {
                         ...state,
                         todo: copyArray
                     }
                 }
-                // console.log(action.payload);
             },
             onChangeCheckBox: (state, action) => {
                 const { taskId } = action.payload
@@ -56,10 +53,16 @@ const todoSlice = createSlice(
             },
             clearTodo: (state) => {
                 state.todo.length = 0;
+            },
+            setProgress: (state) => {
+                const totalTodos = state.todo.length;
+                const completedTodos = state.todo.filter((todo) => todo.isCompleted === true);
+                const progressFinal = (100 * completedTodos.length) / totalTodos;
+                console.log(progressFinal);
+                state.progress = progressFinal
             }
-
         }
     }
 )
-export const { addTodo, clearTodo, onChangeCheckBox, deleteTodo, editTodo } = todoSlice.actions
+export const { addTodo, clearTodo, onChangeCheckBox, deleteTodo, editTodo, setProgress } = todoSlice.actions
 export default todoSlice.reducer //todoReducer

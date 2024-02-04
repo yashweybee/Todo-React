@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { addTodo, deleteTodo } from "../../utils/todoSlice";
+import { addTodo, deleteTodo, setProgress } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
 import { CameraSvg } from "../../utils/svgs";
@@ -118,6 +118,7 @@ const AddTodo = () => {
     };
     // console.log(todoData);
     dispatch(addTodo(todoData));
+    dispatch(setProgress());
     navigate("/todo");
   };
 

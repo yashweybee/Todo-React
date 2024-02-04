@@ -9,6 +9,7 @@ import {
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./header.css";
 import { AccountSvg, SettingSvg } from "../../utils/svgs";
+import Progress from "../Progress/Progress";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,6 +79,9 @@ const Header = () => {
             Completed
           </button>
         </div>
+      </div>
+      <div className="progress-container">
+        <Progress />
       </div>
     </div>
   );
