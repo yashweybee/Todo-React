@@ -6,7 +6,7 @@ body {
 
 @media (min-width: 1024px) {
   body {
-    width: 80%;
+    max-width: 80%;
     margin: auto;
   }
 }
@@ -159,10 +159,14 @@ body {
   .todo-form .heading {
     gap: 35%;
   }
+  .todo-form form {
+    margin-top: 7%;
+  }
   .todo-form form label img {
     left: 40%;
   }
   .todo-form form label svg {
+    top: 22%;
     left: 55%;
   }
 }/*# sourceMappingURL=addTodo.css.map */

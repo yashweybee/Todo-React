@@ -6,7 +6,7 @@ body {
 
 @media (min-width: 1024px) {
   body {
-    width: 80%;
+    max-width: 80%;
     margin: auto;
   }
 }
@@ -29,4 +29,29 @@ body {
   border-radius: 15px;
   color: #ffffff;
   text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .body-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    background: #ffffff;
+  }
+  .body-container .hero-container svg {
+    width: 44em;
+  }
+  .body-container .content {
+    width: 30%;
+  }
+  .body-container .btn a {
+    position: absolute;
+    padding: 1em 6em;
+    left: 63%;
+    background-color: #3787eb;
+    border-radius: 15px;
+    text-decoration: none;
+    top: 48%;
+  }
 }/*# sourceMappingURL=body.css.map */

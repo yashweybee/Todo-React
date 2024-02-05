@@ -24,3 +24,35 @@
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .body-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    background: $white;
+
+    .hero-container {
+      svg {
+        width: 44em;
+      }
+    }
+
+    .content {
+      width: 30%;
+    }
+
+    .btn {
+      a {
+        position: absolute;
+        padding: 1em 6em;
+        left: 63%;
+        background-color: $primary-color;
+        border-radius: 15px;
+        text-decoration: none;
+        top: 48%;
+      }
+    }
+  }
+}

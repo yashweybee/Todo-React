@@ -14,7 +14,7 @@ const Progress = () => {
   useEffect(() => {
     dispatch(setProgress());
   }, []);
-  if (!progressBarValue) return;
+  //   if (!progressBarValue) return;
 
   return (
     <div className="progress-summary">
@@ -23,10 +23,13 @@ const Progress = () => {
       </div>
       <div className="tasks">
         <span>{todos} Tasks</span>
-        <span>{progressBarValue}%</span>
+        <span>{!progressBarValue ? 0 : progressBarValue}%</span>
       </div>
       <div className="progress">
-        <div className="progress-bar" style={{ width: `${progressBarValue}%` }}>
+        <div
+          className="progress-bar"
+          style={{ width: `${!progressBarValue ? 0 : progressBarValue}%` }}
+        >
           {" "}
         </div>
       </div>

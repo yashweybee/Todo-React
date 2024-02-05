@@ -12,7 +12,8 @@ const Body = () => {
       <div className="content">
         <h1>Welcome</h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi atqu
+          A workspace to over 10 Million influencers around the global Of the
+          world.
         </p>
       </div>
       <div className="btn">
