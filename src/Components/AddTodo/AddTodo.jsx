@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addTodo, deleteTodo, setProgress } from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
-import { CameraSvg } from "../../utils/svgs";
+import { BackSvg, CameraSvg } from "../../utils/svgs";
 import { DEFAULT_IMG_PATH } from "../../utils/constants";
 import checkValidation from "../../utils/validation";
 const AddTodo = () => {
@@ -154,7 +154,7 @@ const AddTodo = () => {
         <Link
           to={currentPage === "edit" ? `/todo/display/${idParam}` : "/todo"}
         >
-          Back
+          <BackSvg />
         </Link>
         <h1>
           {currentPage === "display"
