@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: space-between;
     a {
+      display: flex;
       text-decoration: none;
       color: $black;
     }

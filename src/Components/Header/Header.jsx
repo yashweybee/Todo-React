@@ -42,7 +42,7 @@ const Header = () => {
       <div className="heading">
         <Link to="/">
           <h1>TO-DO</h1>
-          {/* <TodoSvg /> */}
+          <TodoSvg />
         </Link>
         {/* <div className="left-icon icons">
           <SettingSvg />
