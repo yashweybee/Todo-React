@@ -155,7 +155,25 @@ body {
   background-color: red;
 }
 
+@media (min-width: 768px) {
+  .todo-form .model-confirm .model-body {
+    left: 35%;
+  }
+  .todo-form .heading {
+    gap: 35%;
+  }
+  .todo-form form label img {
+    left: 40%;
+  }
+  .todo-form form label svg {
+    top: 20%;
+    left: 55%;
+  }
+}
 @media (min-width: 1024px) {
+  .todo-form .model-confirm .model-body {
+    left: 45%;
+  }
   .todo-form .heading {
     gap: 35%;
   }

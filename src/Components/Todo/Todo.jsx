@@ -1,8 +1,7 @@
 import React from "react";
 import "./todo.css";
-import { RightVectorSvg } from "../../utils/svgs";
 
-const Todo = ({ name, isCompleted, deadline, imgFile }) => {
+const Todo = ({ name, deadline, imgFile }) => {
   return (
     <>
       <div className="single-todo">

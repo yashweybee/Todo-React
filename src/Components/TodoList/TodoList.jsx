@@ -124,7 +124,6 @@ const TodoList = () => {
                           >
                             <Todo
                               name={todo.name}
-                              isCompleted={todo.isCompleted}
                               deadline={todo.deadline}
                               imgFile={todo.imgFile}
                             />

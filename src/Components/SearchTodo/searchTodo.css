@@ -36,4 +36,8 @@ body {
 .search-container .search-form .inp-box:focus {
   outline: none;
   border-color: #3787eb;
+}
+.search-container .search-form button {
+  border: none;
+  background: none;
 }/*# sourceMappingURL=searchTodo.css.map */

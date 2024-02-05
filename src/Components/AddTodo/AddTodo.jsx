@@ -35,18 +35,7 @@ const AddTodo = () => {
     return `${year}-${month}-${day}`;
   };
   const [taskDate, setTaskDate] = useState(getFormatedDate());
-
-  const getFormatedTime = () => {
-    const date = new Date();
-
-    // Get hours and minutes
-    const hours = date.getHours().toString().padStart(2, "0"); // Ensure two-digit format
-    const minutes = date.getMinutes().toString().padStart(2, "0"); // Ensure two-digit format
-
-    // Formatted time string
-    return `${hours}:${minutes}`;
-  };
-  const [notificationTime, setNotificationTime] = useState(getFormatedTime());
+  const [notificationTime, setNotificationTime] = useState("");
   const [imgFile, setImgFile] = useState(DEFAULT_IMG_PATH);
 
   useEffect(() => {
@@ -196,7 +185,6 @@ const AddTodo = () => {
 
         <label name="inp-name">
           <p>Task Name</p>
-          {/* <span>{errorMessage}</span> */}
           <input
             required
             type="text"

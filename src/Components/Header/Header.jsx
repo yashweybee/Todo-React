@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setCurrnetState, setSortBy } from "../../utils/stateSlice";
+import {
+  setCurrnetState,
+  setSearchText,
+  setSortBy,
+} from "../../utils/stateSlice";
 import SearchTodo from "../SearchTodo/SearchTodo";
 import "./header.css";
 import Progress from "../Progress/Progress";
+import { TodoSvg } from "../../utils/svgs";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +18,6 @@ const Header = () => {
   const currentState = useSelector((store) => store?.state?.currentState);
   const handelAllBtn = () => {
     dispatch(setCurrnetState("all"));
-    // dispatch(setSearchText(""));
   };
   const handelActiveBtn = () => {
     dispatch(setCurrnetState("active"));
@@ -38,6 +42,7 @@ const Header = () => {
       <div className="heading">
         <Link to="/">
           <h1>TO-DO</h1>
+          {/* <TodoSvg /> */}
         </Link>
         {/* <div className="left-icon icons">
           <SettingSvg />

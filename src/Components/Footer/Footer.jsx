@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  AccountNewSvg,
-  CalenderSvg,
-  ChatSvg,
-  HomeSvg,
-  PlusSvg,
-} from "../../utils/svgs";
+import { PlusSvg } from "../../utils/svgs";
 import "./footer.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";

@@ -32,6 +32,11 @@
         border-color: $primary-color;
       }
     }
+
+    button {
+      border: none;
+      background: none;
+    }
   }
 }
 

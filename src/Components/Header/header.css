@@ -57,6 +57,7 @@ body {
 }
 .main-header .btn-container .all-btns .btn:hover {
   background-color: #1464c7;
+  border-radius: 15px;
 }
 .main-header .btn-container .btn,
 .main-header .btn-container a.btn {

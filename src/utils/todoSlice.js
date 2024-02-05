@@ -3,6 +3,7 @@ import mockData from "./mockData";
 
 const setNotification = (todoData) => {
     console.log(todoData);
+    if (todoData.notificationTime === "") return;
     const [hours, minutes] = todoData.notificationTime.split(':');
     const timeDiff = new Date(todoData.deadline).setHours(hours, minutes, 0, 0) - new Date().getTime();
 
@@ -17,14 +18,12 @@ const setNotification = (todoData) => {
     }, timeDiff);
 }
 
-
-
 const todoSlice = createSlice(
     {
         name: "todo",
         initialState: {
-            // todo: mockData,
-            todo: [],
+            todo: mockData,
+            // todo: [],
             progress: 0
         },
         reducers: {

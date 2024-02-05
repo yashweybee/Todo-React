@@ -178,9 +178,39 @@
   }
 }
 
+@media (min-width: 768px) {
+  .todo-form {
+    .model-confirm {
+      .model-body {
+        left: 35%;
+      }
+    }
+    .heading {
+      gap: 35%;
+    }
+    form {
+      label {
+        img {
+          left: 40%;
+        }
+        svg {
+          top: 20%;
+          left: 55%;
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   .todo-form {
-    // margin-top: 10%;
+    .model-confirm {
+      // width: 80%;
+      // margin: auto;
+      .model-body {
+        left: 45%;
+      }
+    }
     .heading {
       gap: 35%;
     }
