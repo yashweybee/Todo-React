@@ -21,6 +21,7 @@ body {
   justify-content: space-between;
 }
 .main-header .heading a {
+  display: flex;
   text-decoration: none;
   color: #000;
 }
