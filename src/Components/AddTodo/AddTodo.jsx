@@ -1,7 +1,11 @@
 import React, { useEffect, useId, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { addTodo, deleteTodo, setProgress } from "../../utils/todoSlice";
+import todoSlice, {
+  addTodo,
+  deleteTodo,
+  setProgress,
+} from "../../utils/todoSlice";
 import { setCurrnetPage } from "../../utils/stateSlice";
 import "../AddTodo/addTodo.css";
 import { BackSvg, CameraSvg } from "../../utils/svgs";
@@ -167,7 +171,7 @@ const AddTodo = () => {
 
       <form onSubmit={(e) => e.preventDefault()}>
         <label>
-          <img src={imgFile || "../gym-pic.jpg"} alt="image" />
+          <img src={imgFile} alt="todo-image" />
           <div
             style={{ display: currentPage === "display" ? "none" : "block" }}
           >
